@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Edit Buku - Admin</title>
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #c3a2f0ff;
+            min-height: 100vh;
+            padding: 2.5rem 1rem;
+        }
+        .form-wrapper { 
+            max-width:800px; 
+            margin:0 auto; 
+            padding:1.5rem; 
+            background:#fff;
+            color: #000000ff;
+            border-radius:8px; 
+            box-shadow:0 6px 18px rgba(0, 0, 0, 0.06); 
+        }
+        .form-group { 
+            margin-bottom:1rem; 
+        }
+        label { 
+            display:block; margin-bottom:8px; font-weight:600; color: #fff; 
+        }
+        input[type="text"], input[type="number"] { 
+            width:95%; 
+            padding:10px 12px; 
+            border:1px solid #6da9f3ff; 
+            border-radius:8px;
+            background:#fff;
+            color:#111;
+        }
+        .actions { 
+            display:flex; gap:10px; margin-top:12px; 
+        }
+    </style>
+</head>
+<body>
+    <div class="form-wrapper">
+        <h2>Edit Buku</h2>
+
+        @if($errors->any())
+            <div class="error-message">
+                <ul>
+                    @foreach($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
+        <form action="{{ route('buku.update', $buku->id) }}" method="POST">
+            @csrf
+            @method('PUT')
+
+            <div class="form-group">
+                <label for="judul">Judul</label>
+                <input id="judul" type="text" name="judul" value="{{ old('judul', $buku->judul) }}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="pengarang">Pengarang</label>
+                <input id="pengarang" type="text" name="pengarang" value="{{ old('pengarang', $buku->pengarang) }}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="penerbit">Penerbit</label>
+                <input id="penerbit" type="text" name="penerbit" value="{{ old('penerbit', $buku->penerbit) }}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="tahun_terbit">Tahun Terbit</label>
+                <input id="tahun_terbit" type="number" name="tahun_terbit" value="{{ old('tahun_terbit', $buku->tahun_terbit) }}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="stok">Stok</label>
+                <input id="stok" type="number" name="stok" value="{{ old('stok', $buku->stok) }}" required>
+            </div>
+
+            <div class="actions">
+                <button type="submit" class="btn btn-primary">Update</button>
+                <a href="{{ route('buku.index') }}" class="btn btn-secondary">Batal</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
