@@ -19,8 +19,8 @@ return new class extends Migration
         $table->string('penerbit');
         $table->integer('tahun_terbit');
         $table->foreignId('kategori_id')->constrained()->cascadeOnDelete();
-        $table->text('sinopsis')->nullable(); // Sinopsis
-        $table->string('cover')->nullable(); // Foto
+        $table->text('sinopsis')->nullable(); 
+        $table->string('cover')->nullable(); 
         $table->integer('stock')->default(0);
         $table->timestamps();
     });
