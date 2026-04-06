@@ -13,8 +13,12 @@ use App\Http\Controllers\UserController;
 |--------------------------------------------------------------------------
 */
 
-Route::get('/', [HomeController::class, 'index']);
+// landing page
+Route::get('/', function () {
+    return view('landingpage');
+});
 
+// auth
 Route::get('/login', [AuthController::class, 'loginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/register', [AuthController::class, 'register']);
@@ -22,9 +26,19 @@ Route::post('/register', [AuthController::class, 'register']);
 
 /*
 |--------------------------------------------------------------------------
+| DASHBOARD (SETELAH LOGIN)
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/home', [HomeController::class, 'index'])->middleware('auth');
+
+
+/*
+|--------------------------------------------------------------------------
 | AUTH (SEMUA USER LOGIN)
 |--------------------------------------------------------------------------
 */
+
 Route::middleware(['auth'])->group(function () {
 
     // logout
@@ -34,7 +48,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/profile', [UserController::class, 'profile']);
     Route::post('/profile', [UserController::class, 'update']);
 
-    // buku (lihat saja)
+    // buku (lihat semua)
     Route::get('/buku', [BukuController::class, 'index']);
     Route::get('/buku/{id}', [BukuController::class, 'show']);
 });
@@ -42,9 +56,10 @@ Route::middleware(['auth'])->group(function () {
 
 /*
 |--------------------------------------------------------------------------
-| MEMBER (HANYA MEMBER BISA PINJAM)
+| MEMBER (PINJAM BUKU)
 |--------------------------------------------------------------------------
 */
+
 Route::middleware(['auth', 'role:member'])->group(function () {
 
     Route::post('/pinjam/{id}', [PeminjamanController::class, 'store']);
@@ -53,9 +68,10 @@ Route::middleware(['auth', 'role:member'])->group(function () {
 
 /*
 |--------------------------------------------------------------------------
-| ADMIN (CRUD + PEMINJAMAN)
+| ADMIN (KELOLA BUKU & PEMINJAMAN)
 |--------------------------------------------------------------------------
 */
+
 Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
 
     // CRUD buku
@@ -76,6 +92,7 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
 | SUPERADMIN (MANAGE USER)
 |--------------------------------------------------------------------------
 */
+
 Route::middleware(['auth', 'role:superadmin'])->prefix('admin')->group(function () {
 
     Route::get('/user', [UserController::class, 'index']);
