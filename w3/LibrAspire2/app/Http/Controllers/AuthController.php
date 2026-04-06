@@ -12,7 +12,7 @@ class AuthController extends Controller
     // Form login
     public function loginForm()
     {
-        return view('auth.login');
+        return view('login');
     }
 
     // Login
