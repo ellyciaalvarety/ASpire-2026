@@ -1,11 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\BukuController;
-use App\Http\Controllers\PeminjamanController;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BukuController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PeminjamanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,88 +13,140 @@ use App\Http\Controllers\UserController;
 |--------------------------------------------------------------------------
 */
 
-// landing page
+// Landing page
 Route::get('/', function () {
     return view('landingpage');
 });
 
-// auth
+// Login & Register
 Route::get('/login', [AuthController::class, 'loginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
+
+Route::get('/register', function () {
+    return view('register');
+});
 Route::post('/register', [AuthController::class, 'register']);
 
 
 /*
 |--------------------------------------------------------------------------
-| DASHBOARD (SETELAH LOGIN)
+| AUTH (HARUS LOGIN)
 |--------------------------------------------------------------------------
 */
+Route::middleware('auth')->group(function () {
 
-Route::get('/home', [HomeController::class, 'index'])->middleware('auth');
+    Route::get('/logout', [AuthController::class, 'logout']);
 
+    /*
+    |--------------------------------------------------------------------------
+    | REDIRECT OTOMATIS SESUAI ROLE
+    |--------------------------------------------------------------------------
+    */
+    Route::get('/dashboard', function () {
+        $user = Auth::user();
 
-/*
-|--------------------------------------------------------------------------
-| AUTH (SEMUA USER LOGIN)
-|--------------------------------------------------------------------------
-*/
+        if ($user->role == 'admin') {
+            return redirect('/admin');
+        }
 
-Route::middleware(['auth'])->group(function () {
+        if ($user->role == 'member') {
+            return redirect('/member');
+        }
 
-    // logout
-    Route::post('/logout', [AuthController::class, 'logout']);
-
-    // profile
-    Route::get('/profile', [UserController::class, 'profile']);
-    Route::post('/profile', [UserController::class, 'update']);
-
-    // buku (lihat semua)
-    Route::get('/buku', [BukuController::class, 'index']);
-    Route::get('/buku/{id}', [BukuController::class, 'show']);
-});
-
-
-/*
-|--------------------------------------------------------------------------
-| MEMBER (PINJAM BUKU)
-|--------------------------------------------------------------------------
-*/
-
-Route::middleware(['auth', 'role:member'])->group(function () {
-
-    Route::post('/pinjam/{id}', [PeminjamanController::class, 'store']);
-});
+        if ($user->role == 'superadmin') {
+            return redirect('/superadmin');
+        }
+    });
 
 
-/*
-|--------------------------------------------------------------------------
-| ADMIN (KELOLA BUKU & PEMINJAMAN)
-|--------------------------------------------------------------------------
-*/
+    /*
+    |--------------------------------------------------------------------------
+    | ADMIN
+    |--------------------------------------------------------------------------
+    */
+    Route::middleware('admin')->prefix('admin')->group(function () {
 
-Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
+        Route::get('/', function () {
+            return view('admin.home');
+        });
 
-    // CRUD buku
-    Route::get('/buku/create', [BukuController::class, 'create']);
-    Route::post('/buku', [BukuController::class, 'store']);
-    Route::get('/buku/{id}/edit', [BukuController::class, 'edit']);
-    Route::put('/buku/{id}', [BukuController::class, 'update']);
-    Route::delete('/buku/{id}', [BukuController::class, 'destroy']);
+        Route::get('/profil', function () {
+            return view('admin.profile');
+        });
 
-    // peminjaman
-    Route::get('/peminjaman', [PeminjamanController::class, 'index']);
-    Route::post('/peminjaman/{id}/{status}', [PeminjamanController::class, 'updateStatus']);
-});
+        Route::get('/profil/edit', function () {
+            return view('admin.editprofile');
+        });
+
+        // buku
+        Route::get('/buku', [BukuController::class, 'index']);
+        Route::get('/buku/create', [BukuController::class, 'create']);
+        Route::post('/buku', [BukuController::class, 'store']);
+        Route::get('/buku/{id}/edit', [BukuController::class, 'edit']);
+        Route::put('/buku/{id}', [BukuController::class, 'update']);
+        Route::delete('/buku/{id}', [BukuController::class, 'destroy']);
+
+        // peminjaman
+        Route::get('/peminjaman', [PeminjamanController::class, 'index']);
+    });
 
 
-/*
-|--------------------------------------------------------------------------
-| SUPERADMIN (MANAGE USER)
-|--------------------------------------------------------------------------
-*/
+    /*
+    |--------------------------------------------------------------------------
+    | MEMBER
+    |--------------------------------------------------------------------------
+    */
+    Route::middleware('member')->prefix('member')->group(function () {
 
-Route::middleware(['auth', 'role:superadmin'])->prefix('admin')->group(function () {
+        Route::get('/', function () {
+            return view('member.home');
+        });
 
-    Route::get('/user', [UserController::class, 'index']);
-    Route::delete('/user/{id}', [UserController::class, 'destroy']);
+        Route::get('/profil', function () {
+            return view('member.profile');
+        });
+
+        Route::get('/profil/edit', function () {
+            return view('member.editprofile');
+        });
+
+        Route::get('/contact', function () {
+            return view('member.contactus');
+        });
+
+        Route::get('/buku', [BukuController::class, 'index']);
+        Route::get('/buku/{id}', function () {
+            return view('member.buku.detail');
+        });
+
+        Route::post('/pinjam/{id}', [PeminjamanController::class, 'store']);
+    });
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | SUPERADMIN
+    |--------------------------------------------------------------------------
+    */
+    Route::middleware('superadmin')->prefix('superadmin')->group(function () {
+
+        Route::get('/', function () {
+            return view('superadmin.home');
+        });
+
+        Route::get('/profil', function () {
+            return view('superadmin.profile');
+        });
+
+        Route::get('/profil/edit', function () {
+            return view('superadmin.editprofile');
+        });
+
+        // manage user
+        Route::get('/user', [UserController::class, 'index']);
+        Route::get('/user/{id}/edit', [UserController::class, 'edit']);
+        Route::put('/user/{id}', [UserController::class, 'update']);
+        Route::delete('/user/{id}', [UserController::class, 'destroy']);
+    });
+
 });

@@ -11,13 +11,11 @@ class SuperAdminSeeder extends Seeder
     public function run()
     {
         DB::table('users')->insert([
-            'name' => 'Super Admin',
+           'name' => 'Super Admin',
             'email' => 'superadmin@example.com',
-            'email_verified_at' => now(),
             'password' => Hash::make('password123'),
             'role' => 'superadmin',
             'foto' => 'default.jpg',
-            'remember_token' => null,
             'created_at' => now(),
             'updated_at' => now(),
         ]);

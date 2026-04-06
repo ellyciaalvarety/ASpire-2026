@@ -9,39 +9,68 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
-    // Form login
+    // ======================
+    // FORM LOGIN
+    // ======================
     public function loginForm()
     {
-        return view('login');
+        return view('login'); // resources/views/login.blade.php
     }
 
-    // Login
+    // ======================
+    // LOGIN
+    // ======================
     public function login(Request $request)
     {
-        if (Auth::attempt($request->only('email','password'))) {
-            return redirect('/');
+        $credentials = $request->only('email','password');
+
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+
+            $user = Auth::user();
+
+            //  redirect sesuai role
+            if ($user->role == 'member') {
+                return redirect('/member');
+            }
+
+            if ($user->role == 'admin') {
+                return redirect('/admin');
+            }
+
+            if ($user->role == 'superadmin') {
+                return redirect('/superadmin');
+            }
         }
 
-        return back()->with('error','Login gagal');
+        return back()->with('error','Email atau password salah');
     }
 
-    // Register
+    // ======================
+    // REGISTER
+    // ======================
     public function register(Request $request)
     {
         User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'role' => 'member'
+            'role' => 'member',
+            'foto' => 'default.jpg'
         ]);
 
         return redirect('/login');
     }
 
-    // Logout
-    public function logout()
+    // ======================
+    // LOGOUT
+    // ======================
+    public function logout(Request $request)
     {
         Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
         return redirect('/login');
     }
 }
