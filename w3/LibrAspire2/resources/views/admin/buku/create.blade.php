@@ -169,11 +169,16 @@ body {
             <label>Publisher</label>
             <input type="text" name="penerbit" value="{{ old('penerbit') }}" required>
         </div>
-        <div class="form-group"> <label>Category</label> 
-            <select name="category_id">
+        <div class="form-group">
+            <label>Stock</label>
+            <input type="number" name="stock" value="{{ old('stock', 0) }}" min="0">
+        </div>
+        <div class="form-group">
+            <label>Category</label>
+            <select name="kategori_id">
                 <option value="">-- Pilih Kategori --</option>
                 @foreach($kategori as $k)
-                    <option value="{{ $k->id }}">{{ $k->nama }}</option>
+                    <option value="{{ $k->id }}" {{ old('kategori_id') == $k->id ? 'selected' : '' }}>{{ $k->name }}</option>
                 @endforeach
             </select>
         </div>

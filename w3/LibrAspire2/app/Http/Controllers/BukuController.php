@@ -33,7 +33,8 @@ class BukuController extends Controller
             'pengarang' => 'required',
             'penerbit' => 'required',
             'tahun_terbit' => 'required|numeric',
-            'category_id' => 'required',
+            'kategori_id' => 'required',
+            'stock' => 'nullable|integer|min:0',
             'cover' => 'image|mimes:jpg,jpeg,png|max:2048'
         ]);
 
@@ -49,10 +50,10 @@ class BukuController extends Controller
             'pengarang' => $request->pengarang,
             'penerbit' => $request->penerbit,
             'tahun_terbit' => $request->tahun_terbit,
-            'category_id' => $request->category_id,
+            'kategori_id' => $request->kategori_id,
             'sinopsis' => $request->sinopsis,
             'cover' => $coverPath,
-            'stock' => $request->stock
+            'stock' => $request->stock ?? 0
         ]);
 
         return redirect()->route('admin.home')->with('success', 'Buku berhasil ditambahkan');
@@ -85,7 +86,8 @@ class BukuController extends Controller
             'pengarang' => 'required',
             'penerbit' => 'required',
             'tahun_terbit' => 'required|numeric',
-            'category_id' => 'required',
+            'kategori_id' => 'required',
+            'stock' => 'nullable|integer|min:0',
             'cover' => 'image|mimes:jpg,jpeg,png|max:2048'
         ]);
 
@@ -105,9 +107,9 @@ class BukuController extends Controller
             'pengarang' => $request->pengarang,
             'penerbit' => $request->penerbit,
             'tahun_terbit' => $request->tahun_terbit,
-            'category_id' => $request->category_id,
+            'kategori_id' => $request->kategori_id,
             'sinopsis' => $request->sinopsis,
-            'stock' => $request->stock
+            'stock' => $request->stock ?? $buku->stock
         ]);
 
         return redirect()->route('buku.index')->with('success', 'Buku berhasil diupdate');
