@@ -123,4 +123,12 @@ class BukuController extends Controller
 
         return redirect()->route('buku.index')->with('success', 'Buku berhasil dihapus');
     }
+
+    // Latest Collection
+    public function latest()
+    {
+        $latestBooks = Buku::latest()->take(12)->get();
+
+        return view('welcome', compact('latestBooks'));
+    }
 }

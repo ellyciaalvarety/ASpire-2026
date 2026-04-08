@@ -125,7 +125,9 @@ Route::middleware('auth')->group(function () {
     Route::middleware('superadmin')->prefix('superadmin')->group(function () {
 
         Route::get('/', function () {
-            return view('superadmin.home');
+            $latestBooks = \App\Models\Buku::latest()->take(12)->get();
+
+            return view('superadmin.home', compact('latestBooks'));
         })->name('superadmin.home');
 
         // MANAGE USER
@@ -144,6 +146,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/profile/edit', function () {
             return view('superadmin.editprofile', ['user' => Auth::user()]);
         })->name('superadmin.editprofile');
+
 
     });
 

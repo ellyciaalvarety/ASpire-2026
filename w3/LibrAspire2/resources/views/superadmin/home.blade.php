@@ -148,15 +148,17 @@
 <!-- LATEST -->
 <h2>Our Latest Collection</h2>
 <div class="books">
-    @for ($i = 0; $i < 15; $i++)
+    @foreach ($latestBooks as $item)
     <div class="card">
-        <img src="{{ asset('images/default.jpg') }}">
-        <h4>Dear Debbie</h4>
-        <small>Freida McFadden</small><br>
-        <small>2016</small><br>
-        <span class="btn">Stock: 4</span>
+        <img src="{{ $item->cover ? asset('storage/' . $item->cover) : asset('images/default.jpg') }}">
+        
+        <h4>{{ $item->judul }}</h4>
+        <small>{{ $item->pengarang }}</small><br>
+        <small>{{ $item->tahun_terbit }}</small><br>
+        
+        <span class="btn">Stock: {{ $item->stock }}</span>
     </div>
-    @endfor
+    @endforeach
 </div>
 
 <!-- FOOTER -->
