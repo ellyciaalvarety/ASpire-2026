@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Buku;
 use App\Models\Kategori;
@@ -126,9 +128,21 @@ class BukuController extends Controller
 
     // Latest Collection
     public function latest()
-    {
-        $latestBooks = Buku::latest()->take(12)->get();
+{
+    return Buku::latest()->take(12)->get();
+}
 
-        return view('welcome', compact('latestBooks'));
-    }
+    //popular
+ public function popular()
+{
+    $oneWeekAgo = Carbon::now()->subDays(7);
+
+    return DB::table('peminjaman')
+->join('buku', 'peminjaman.buku_id', '=', 'buku.id')        ->select('buku.*', DB::raw('COUNT(peminjaman.id) as total_pinjam'))
+        ->where('peminjaman.created_at', '>=', $oneWeekAgo)
+        ->groupBy('buku.id')
+        ->orderByDesc('total_pinjam')
+        ->limit(5)
+        ->get();
+}
 }

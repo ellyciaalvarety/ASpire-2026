@@ -41,4 +41,12 @@ class HomeController extends Controller
 
         return redirect('/login');
     }
+    use App\Models\Kategori;
+
+    public function home()
+    {
+        $kategori = Kategori::withCount('buku')->get();
+
+        return view('superadmin.home', compact('kategori'));
+    }
 }

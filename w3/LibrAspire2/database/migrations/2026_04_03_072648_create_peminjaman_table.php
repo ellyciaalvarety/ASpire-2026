@@ -14,8 +14,10 @@ return new class extends Migration
        Schema::create('peminjaman', function (Blueprint $table) {
         $table->id();
         $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-        $table->foreignId('buku_id')->constrained()->cascadeOnDelete();
-        $table->date('tanggal_pinjam');
+$table->foreignId('buku_id')
+      ->constrained('buku') 
+      ->cascadeOnDelete();
+              $table->date('tanggal_pinjam');
         $table->date('tanggal_kembali')->nullable();
         $table->enum('status', ['waiting','approved','borrowed','returned'])->default('waiting');
         $table->timestamps();

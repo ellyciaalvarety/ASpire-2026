@@ -123,43 +123,44 @@
 <!-- POPULAR -->
 <h2>Popular Now</h2>
 <div class="books">
-    @for ($i = 0; $i < 5; $i++)
-    <div class="card">
-        <img src="{{ asset('images/default.jpg') }}">
-        <h4>Dear Debbie</h4>
-        <small>Freida McFadden</small><br>
-        <small>2016</small><br>
-        <span class="btn">Stock: 4</span>
-    </div>
-    @endfor
+    @forelse ($bukuPopular as $buku)
+        <div class="card">
+            <img src="{{ $buku->cover ? asset($buku->cover) : asset('images/default.jpg') }}">
+
+            <h4>{{ $buku->judul }}</h4>
+
+            <small>{{ $buku->pengarang }}</small><br>
+            <small>{{ $buku->tahun_terbit }}</small><br>
+
+            
+        </div>
+    @empty
+        <p>Tidak ada buku populer minggu ini.</p>
+    @endforelse
 </div>
 
-<!-- CATEGORY -->
-<h2>Book Categories</h2>
-<div class="categories">
-    @for ($i = 0; $i < 5; $i++)
-    <div class="category">
-        <strong>Technology</strong><br><br>
-        2500 Books
-    </div>
-    @endfor
-</div>
+
+
 
 <!-- LATEST -->
 <h2>Our Latest Collection</h2>
 <div class="books">
-    @foreach ($latestBooks as $item)
-    <div class="card">
-        <img src="{{ $item->cover ? asset('storage/' . $item->cover) : asset('images/default.jpg') }}">
-        
-        <h4>{{ $item->judul }}</h4>
-        <small>{{ $item->pengarang }}</small><br>
-        <small>{{ $item->tahun_terbit }}</small><br>
-        
-        <span class="btn">Stock: {{ $item->stock }}</span>
-    </div>
-    @endforeach
+    @forelse ($latestBooks as $item)
+        <div class="card">
+            <img src="{{ $item->cover ? asset($item->cover) : asset('images/default.jpg') }}">
+
+            <h4>{{ $item->judul }}</h4>
+
+            <small>{{ $item->pengarang }}</small><br>
+            <small>{{ $item->tahun_terbit }}</small><br>
+            
+            <span class="btn">Stock: {{ $item->stock }}</span>
+        </div>
+    @empty
+        <p>Tidak ada buku terbaru.</p>
+    @endforelse
 </div>
+
 
 <!-- FOOTER -->
 <div class="footer">

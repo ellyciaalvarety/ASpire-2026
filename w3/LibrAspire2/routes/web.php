@@ -125,10 +125,13 @@ Route::middleware('auth')->group(function () {
     Route::middleware('superadmin')->prefix('superadmin')->group(function () {
 
         Route::get('/', function () {
-            $latestBooks = \App\Models\Buku::latest()->take(12)->get();
+    $controller = app(\App\Http\Controllers\BukuController::class);
 
-            return view('superadmin.home', compact('latestBooks'));
-        })->name('superadmin.home');
+    $latestBooks = $controller->latest();
+    $bukuPopular = $controller->popular();
+
+    return view('superadmin.home', compact('latestBooks', 'bukuPopular'));
+});
 
         // MANAGE USER
         Route::get('/user', [UserController::class, 'index'])->name('superadmin.user.index');

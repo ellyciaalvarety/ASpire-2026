@@ -18,7 +18,7 @@ class BukuSeeder extends Seeder
                 'tahun_terbit' => 2019,
                 'kategori_id' => 1,
                 'sinopsis' => 'Atomic Habits: Perubahan Kecil yang Memberikan Hasil Luar Biasa adalah buku kategori self improvement karya James Clear. Pada umumnya, perubahan-perubahan kecil seringkali terkesan tak bermakna karena tidak langsung membawa perubahan nyata pada hidup suatu manusia. Jika diumpamakan sekeping koin tidak bisa menjadikan kaya, suatu perubahan positif seperti meditasi selama satu menit atau membaca buku satu halaman setiap hari mustahil menghasilkan perbedaan yang bisa terdeteksi. Namun hal tersebut tidak sejalan dengan pemikiran James Clear, ia merupakan seorang pakar dunia yang terkenal dengan habits atau kebiasaan. Ia tahu bahwa tiap perbaikan kecil bagaikan menambahkan pasir ke sisi positif timbangan dan akan menghasilkan perubahan nyata yang berasal dari efek gabungan ratusan bahkan ribuan keputusan kecil. Ia menamakan perubahan kecil yang membawa pengaruh yang luar biasa dengan nama atomic habits. Dalam buku ini James Clear, seorang penulis sekaligus pembicara yang sangat terkenal akan topik habit memaparkan bahwa pada hakikatnya sebuah perubahan kecil (Atomic Habit) sering dianggap remeh, sebenarnya akan memberikan hasil yang sangat menjanjikan dalam hidup. Yang dipandang penting dalam perubahan perilaku bukan satu persen perbaikan tunggal, melainkan ribuan perbaikan atau sekumpulan atomic habits yang saling bertumpuk dan menjadi unit dasar dalam suatu sistem yang penting. James Clear menjelaskan bahwa terdapat tiga tingkat perubahan yaitu perubahan hasil, perubahan proses, dan perubahan identitas. Cara paling efektif dalam mengubah kebiasaan adalah bukan berfokus pada apa yang ingin dicapai, melainkan tipe orang seperti apa yang diinginkan. Identitas seseorang muncul dari kebiasaan yang dilakukan setiap harinya. Alasan utama kebiasaan penting karena kebiasaan dapat mengubah keyakinan tentang diri sendiri. Clear juga memperkenalkan empat Kaidah Perubahan Perilaku untuk membantu mengubah perilaku manusia yaitu menjadikannya terlihat, menjadikannya menarik, menjadikannya mudah, menjadikannya memuaskan. Keempat kaidah ini tidak hanya mengajari kita cara menciptakan kebiasaan-kebiasaan baru, melainkan menyingkapi sejumlah wawasan menarik tentang perilaku manusia.',
-                'cover' => 'atomichabits.jpg',
+                'cover' => 'images/atomichabits.png',
                 'stock' => 10,
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -31,7 +31,7 @@ class BukuSeeder extends Seeder
                 'tahun_terbit' => 2012,
                 'kategori_id' => 2,
                 'sinopsis' => 'Talita Luna <br> Kesejatian hidup ada pada batu kerikil yang tertendang ketika kau melangkah menyusuri jalan. Kesejatian hidup ada pada selembar daun kering yang gugur tertiup angin. Kesejatian hidup ada air susu ibu yang yang merelakan puting payudaranya dihisap oleh bayi manapun. Di Vihara Pit Yong Kiong, Pasuruan, di pelabuhan Belawan, di Penang, di Bangkok, di Laos, di Golden Triangle, di Cambodia, di Bandung, dimanapun kau hidup. Tapi, dia mungkin tak terlihat pada arus politik yang menyudutkanmu pada pilihan kedigdayaan. Dia menyembunyikan diri dari teriakan-teriakan yang menggerakan perubahan. Kesejatian hidup tak memerlukan perubahan, namun juga tak menampiknya. Dia rebah pada semua kesederhanaan yang ada di sekelilingmu. Maka, carilah, dan kamu akan mendapatkannya. Ketuklah, maka pintu akan dibukakan bagimu. Mintalah, maka kamu akan diberi. <br> Demikianlah Dewi Lestari mewakilkan sebuah upaya pencarian kesejatian hidup pada seorang tokoh bernama Bodhi. Seorang bayi yang di suatu pagi tergeletak di pintu Vihara. Dipungut, diasuh, dan dididik oleh seorang Pandita, Guru Liong. Merasa bahwa karma pada hidup masa lalunya sangat berat. 18 tahun dididik dengan ketat, termasuk penguasaan terhadap sebuah ilmu bela diri, Bodhi mengalami penyempurnaan batin. Pemurnian spirit. Termasuk sejumlah pengalaman uniknya yang "merasa" menjadi ulat, tikus got, kucing, dan sapi. <br> 18 tahun adalah waktu yang cukup, dan Bodhi mohon pamit. Bersama serombongan pendeta Buddha, Bodhi menyeberang ke Sumatera dan memutuskan menetap di daerah Belawan. Tanpa KTP, tak juga paham mengenai asal usul dan tanggal kelahirannya. Bekerja tiga bulan, mendapat upah, dan dibantu oleh Ompu Berlin untuk mendapatkan sejumlah dokumen identitas termasuk paspor, Bodhi menyeberang ke Penang. Disana dia bertemu dengan sejumlah backpackers yang kemudian "memberi" arah perjalanan berikutnya: Bangkok.',
-                'cover' => 'akar',
+                'cover' => 'images/akar.png',
                 'stock' => 8,
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -45,7 +45,7 @@ class BukuSeeder extends Seeder
                 'kategori_id' => 2,
                 'sinopsis' => 'Siapa sangka, mengembalikan dompet pria asing justru membuat Nara terjebak ke dalam sebuah permainan seorang psikopat?
                 Nara diculik oleh seorang pria psikopat bernama Jeon Jehyun. Ia disiksa dan dijadikan trophy Jehyun—sebuah reward untuk diri Jehyun sendiri yang telah berhasil bertahan hidup dari masa lalunya yang kelam. Namun ternyata, menjadi trophy milik seorang pria kaya bukanlah hal yang indah. Nara harus menerima semua perlakuan gila Jehyun, apa pun itu. Ia tidak bisa menemukan jalan keluar karena Jehyun selalu membayanginya dengan ketiga asistennya—Mark, Doyoun, dan Hendry. Permainan Jehyun semakin menggila ketika Seo Jun—mantan kekasih Nara—datang dan ingin merebut Nara.  Lantas, berhasilkah mereka semua keluar dari permainan gila Jehyun? Siapakah dari mereka yang akan menjadi pemenang permainan, dan mendapatkan trophy berharga itu?',
-                'cover' => 'trophy.png',
+                'cover' => 'images/trophy.png',
                 'stock' => 5,
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -71,7 +71,7 @@ class BukuSeeder extends Seeder
                                 From reading before bed to making time in the morning, reading habits can be formed with consistency. Choose books according to your interests and literacy level. Start with a book that suits your reading desires and abilities. Find a quiet, comfortable place to read. Sufficient lights, comfortable chairs, and a little music can create a better reading experience. completion in reading groups or literacy forums. Discuss the books you read and get recommendations from fellow readers. Make notes or a journal about the books you have read. 
 
                                 Write down your thoughts, impressions, and lessons learned. Involve the family in reading activities. Read stories to children or invite them to read together. It creates close family bonds through positive activities. Feel free to explore new genres. Sometimes, the best surprises come from books you never imagined you would enjoy. Take advantage of technology by reading digital books or joining an online literacy community. This opens up opportunities to connect with readers from all over the world.',
-                'cover' => 'aslongasthelemontreesgrow.png',
+                'cover' => 'images/aslongasthelemontreesgrow.png',
                 'stock' => 7,
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -93,7 +93,7 @@ class BukuSeeder extends Seeder
                                 Bali: The Journey in Heaven on Earth adalah kumpulan puisi yang menyampaikan pesan harapan, cinta, dan kekaguman terhadap pulau Bali. Kompilasi ini diisi dengan puisi-puisi yang membawa makna mendalam bagi penulisnya dan dihiasi dengan ilustrasi indah yang menggambarkan keajaiban dan keindahan Bali. Secara keseluruhan, karya-karya tersebut pasti akan menghangatkan hati pembaca dan mengilhaminya dengan sumber inspirasi yang akan bertahan selamanya. Ini adalah surga terakhir di bumi, surga tersembunyi di sepanjang lautan. Dikelilingi oleh kuil-kuil, dikelilingi oleh laut. Tempat yang terkenal dengan ketenangannya. Perjumpaan dengan suatu tempat, kontingensi, dan bahkan duniawi dapat menghasilkan karya seni yang sangat mengesankan. Kumpulan puisi Indah ini menceritakan perjalanan batin dan Bali dengan daya pikatnya yang tak terkira sehingga menjadi cerminan dari esensinya. Mencapai melampaui dunia kasat mata, pembaca akan berkenalan dengan kedalaman sensasi.
 
                                 Buku terbaru penulis dan seniman Indah P, Bali: Perjalanan ke Surga di Bumi yang menggabungkan puisi dan lukisan di pulau dewata. Penulis mengatakan kecintaannya pada pulau Bali yang menginspirasinya untuk menulis dan melukis keindahan Bali melalui huruf dan  warna di atas kanvas. Rasa yang mendalam akan kesakralan, keindahan alam, keagungan seni budaya dan keluhuran masyarakat pulau Bali mendorong Indah untuk menulis kumpulan puisi ini.',
-                'cover' => 'bali.png',
+                'cover' => 'images/bali.png',
                 'stock' => 6,
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -108,7 +108,7 @@ class BukuSeeder extends Seeder
                 'sinopsis' => 'In 1972, when workers in pottstown, pennsylvania, were digging the foundations for a new development, the last thing they expected to find was a skeleton at the bottom of a well. Who the skeleton was and how it got there were two of the long-held secrets kept by the residents of chicken hill, the dilapidated neighbourhood where immigrant jews and african americans lived side by side and shared ambitions and sorrows. 
 
                 As these characters stories overlap and deepen, it becomes clear how much the people who live on the margins struggle and what they must do to survive. When the truth is finally revealed about what happened on chicken hill and the part the towns white establishment played in it, mcbride shows us that even in dark times, it is love and community-heaven and earth-that sustain us.',
-                'cover' => 'theheavenandearthgrocerystore.png',
+                'cover' => 'images/theheavenandearthgrocerystore.png',
                 'stock' => 7,
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -131,7 +131,7 @@ Dahiku bersimbah peluh.
 ""Kalau tidak?"" tanyaku tegang.
  
 ""Kalau tidak, wanita yang Anda cintai akan mati... perlahan-lahan. Dalam waktu senggangnya, majikan kami suka menghibur diri dengan membuat alat-alat dan menciptakan cara-cara penyiksaan...."""',
-                'cover' => 'thebigfour.png',
+                'cover' => 'images/thebigfour.png',
                 'stock' => 5,
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -152,7 +152,7 @@ Mana ramalan mengerikannya, kau bilang? Baiklah, katanya salah satu anak dari De
 Percy Jackson,
 Setelah tahu rahasia besar Chiron, Trailer centaur.
 ',
-                'cover' => 'pjo2.png',
+                'cover' => 'images/pjo2.png',
                 'stock' => 5,
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -165,7 +165,7 @@ Setelah tahu rahasia besar Chiron, Trailer centaur.
                 'tahun_terbit' => 2020,
                 'kategori_id' => 2,
                 'sinopsis' => 'Five Nights At Freddy`S Graphic Novel #1: The Silver Eyes',
-                'cover' => 'fnafthesilvereyes.png',
+                'cover' => 'images/fnafthesilvereyes.png',
                 'stock' => 5,
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -178,7 +178,7 @@ Setelah tahu rahasia besar Chiron, Trailer centaur.
                 'tahun_terbit' => 2021,
                 'kategori_id' => 2,
                 'sinopsis' => 'Five Nights At Freddys Graphic Novel #2: The Twisted Ones.',
-                'cover' => 'fnafthetwistedone',
+                'cover' => 'images/fnafthetwistedones.png',
                 'stock' => 5,
                 'created_at' => now(),
                 'updated_at' => now(),
