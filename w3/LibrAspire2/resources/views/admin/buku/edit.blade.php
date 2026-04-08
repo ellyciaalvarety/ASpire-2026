@@ -165,6 +165,19 @@
                                 <input id="penerbit" type="text" name="penerbit" value="{{ old('penerbit', $buku->penerbit) }}" required>
                             </div>
                             <div>
+                                <label for="stock">Stock</label>
+                                <input id="stock" type="number" name="stock" value="{{ old('stock', $buku->stock) }}" min="0">
+                            </div>
+                            <div>
+                                <label for="kategori_id">Category</label>
+                                <select id="kategori_id" name="kategori_id">
+                                    <option value="">-- Pilih Kategori --</option>
+                                    @foreach($kategori as $k)
+                                        <option value="{{ $k->id }}" {{ old('kategori_id', $buku->kategori_id) == $k->id ? 'selected' : '' }}>{{ $k->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div>
                                 <label for="isbn">NISBN</label>
                                 <input id="isbn" type="text" name="isbn" value="{{ old('isbn', $buku->isbn) }}" required>
                             </div>
