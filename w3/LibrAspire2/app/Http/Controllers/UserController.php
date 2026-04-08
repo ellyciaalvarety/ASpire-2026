@@ -135,6 +135,6 @@ class UserController extends Controller
         }
 
         $user->save();
-        return redirect()->route('profile')->with('success', 'Profil berhasil diperbarui');
-    }
+        return redirect()->route(auth()->user()->role . '.profile')->with('success', 'Profil berhasil diperbarui');
+        }
 }
