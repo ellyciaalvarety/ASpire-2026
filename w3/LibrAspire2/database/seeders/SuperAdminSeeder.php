@@ -19,5 +19,23 @@ class SuperAdminSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now(),
         ]);
+        DB::table('users')->insert([
+           'name' => 'Admin',
+            'email' => 'admin@gmail.com',
+            'password' => Hash::make('123456'),
+            'role' => 'admin',
+            'foto' => 'default.jpg',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+        DB::table('users')->insert([
+           'name' => 'Member',
+            'email' => 'member@gmail.com',
+            'password' => Hash::make('123456'),
+            'role' => 'member',
+            'foto' => 'default.jpg',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
     }
 }
