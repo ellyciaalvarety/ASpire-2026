@@ -146,7 +146,7 @@
 
             <h4>{{ $buku->judul }}</h4>
 
-            <small>{{ $buku->penulis ?? '-' }}</small><br>
+            <small>{{ $buku->pengarang ?? '-' }}</small><br>
             <small>{{ $buku->tahun_terbit ?? '-' }}</small><br>
 
             <span class="btn">

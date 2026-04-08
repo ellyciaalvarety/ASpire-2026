@@ -19,8 +19,9 @@ class BukuController extends Controller
     // Form tambah buku
     public function create()
     {
+        
         $kategori = Kategori::all();
-        return view('buku.create', compact('kategori'));
+        return view('admin.buku.create', compact('kategori'));
     }
 
     // Simpan data buku
@@ -54,7 +55,7 @@ class BukuController extends Controller
             'stock' => $request->stock
         ]);
 
-        return redirect()->route('buku.index')->with('success', 'Buku berhasil ditambahkan');
+        return redirect()->route('admin.home')->with('success', 'Buku berhasil ditambahkan');
     }
 
     // Detail buku
@@ -129,7 +130,7 @@ class BukuController extends Controller
     // Latest Collection
     public function latest()
 {
-    return Buku::latest()->take(12)->get();
+    return Buku::latest()->take(20)->get();
 }
 
     //popular

@@ -13,7 +13,7 @@ class Buku extends Model
     protected $fillable = [
         'judul',
         'isbn',
-        'kategori_id',
+        'category_id',
         'pengarang',
         'penerbit',
         'tahun_terbit',
@@ -29,7 +29,7 @@ class Buku extends Model
     }
     public function kategori()
     {
-        return $this->belongsTo(Kategori::class);
+        return $this->belongsTo(Kategori::class, 'category_id');
     }
 }
 

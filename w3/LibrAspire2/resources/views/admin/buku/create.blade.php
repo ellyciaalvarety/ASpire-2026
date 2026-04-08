@@ -1,190 +1,210 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add New Book - LibrAspire</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Inter', Arial, sans-serif;
-            background: #edf2f8;
-            color: #151a33;
-        }
-        .page-wrapper {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-        .page-content {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 40px;
-        }
-        .card-form {
-            width: 100%;
-            max-width: 980px;
-            border-radius: 32px;
-            overflow: hidden;
-            box-shadow: 0 28px 70px rgba(15, 33, 71, 0.12);
-            display: flex;
-            background: white;
-        }
-        .panel-left {
-            width: 320px;
-            background: linear-gradient(180deg, #0f2147 0%, #22316f 100%);
-            padding: 48px 32px;
-            color: white;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-        .panel-left h1 {
-            margin: 0;
-            font-size: 26px;
-            letter-spacing: -0.04em;
-        }
-        .panel-left p {
-            margin-top: 18px;
-            font-size: 14px;
-            line-height: 1.8;
-            color: rgba(255,255,255,0.78);
-        }
-        .form-area {
-            flex: 1;
-            padding: 48px 42px;
-        }
-        .form-area h2 {
-            margin-top: 0;
-            font-size: 32px;
-            font-weight: 800;
-            color: #151a33;
-        }
-        .form-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px 24px;
-            margin-top: 28px;
-        }
-        .form-grid input,
-        .form-grid textarea,
-        .form-grid select {
-            width: 100%;
-            border: 1px solid #dce0e8;
-            border-radius: 14px;
-            padding: 16px 18px;
-            font-size: 14px;
-            color: #151a33;
-            background: #fafbff;
-        }
-        .form-grid textarea {
-            resize: vertical;
-            min-height: 140px;
-            grid-column: span 2;
-        }
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 700;
-            color: #151a33;
-        }
-        .button-row {
-            display: flex;
-            justify-content: flex-end;
-            gap: 16px;
-            margin-top: 28px;
-        }
-        .btn-secondary,
-        .btn-primary {
-            border-radius: 999px;
-            border: none;
-            padding: 14px 34px;
-            font-size: 14px;
-            font-weight: 700;
-            cursor: pointer;
-        }
-        .btn-secondary {
-            background: white;
-            color: #151a33;
-            border: 1px solid #151a33;
-        }
-        .btn-primary {
-            background: #0f2147;
-            color: white;
-        }
-        .footer {
-            margin-top: auto;
-            background: #0f2147;
-            color: white;
-            text-align: center;
-            padding: 24px 20px;
-            font-size: 14px;
-        }
-        @media (max-width: 900px) {
-            .card-form { flex-direction: column; }
-            .panel-left, .form-area { width: 100%; }
-            .form-grid { grid-template-columns: 1fr; }
-            .form-grid textarea { grid-column: auto; }
-        }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+```
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: #f5f6f8;
+}
+
+/* Layout utama */
+.main-wrapper {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar kiri */
+.sidebar {
+    width: 260px;
+    background: linear-gradient(180deg, #1e3a8a, #1d4ed8);
+    color: white;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 40px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Content kanan */
+.content {
+    flex: 1;
+    padding: 60px;
+}
+
+/* Judul */
+.title {
+    font-size: 40px;
+    font-weight: bold;
+    margin-bottom: 40px;
+    color: #0f172a;
+}
+
+/* Form */
+.form-box {
+    max-width: 500px;
+}
+
+/* Group */
+.form-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    width: 130px;
+    font-weight: 600;
+    color: #374151;
+}
+
+.form-group input,
+.form-group textarea {
+    flex: 1;
+    padding: 12px;
+    border-radius: 12px;
+    border: none;
+    background: #e5e7eb;
+    outline: none;
+}
+
+/* Full textarea */
+.form-group.full {
+    align-items: flex-start;
+}
+
+.form-group.full textarea {
+    width: 100%;
+}
+
+/* Button */
+.button-group {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.btn {
+    padding: 10px 30px;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.btn.cancel {
+    background: white;
+    border: 1px solid #1e3a8a;
+    color: #1e3a8a;
+}
+
+.btn.submit {
+    background: #0f172a;
+    color: white;
+}
+
+/* Footer */
+.footer {
+    background: #0f1e3a;
+    color: white;
+    text-align: center;
+    padding: 25px;
+}
+
+.footer p {
+    margin: 5px 0;
+}
+</style>
+```
+
 </head>
+
 <body>
-    <div class="page-wrapper">
-        <div class="page-content">
-            <div class="card-form">
-                <div class="panel-left">
-                    <h1>LibrAspire</h1>
-                    <p>Isi data buku baru dengan lengkap di halaman ini. Setelah disimpan, buku akan muncul di daftar koleksi admin.</p>
-                </div>
-                <div class="form-area">
-                    <h2>Add New Book</h2>
-                    <form action="{{ route('admin.buku.store') }}" method="POST" enctype="multipart/form-data">
-                        @csrf
-                        <div class="form-grid">
-                            <div>
-                                <label for="judul">Tittle</label>
-                                <input id="judul" type="text" name="judul" value="{{ old('judul') }}" required>
-                            </div>
-                            <div>
-                                <label for="tahun_terbit">Year</label>
-                                <input id="tahun_terbit" type="number" name="tahun_terbit" value="{{ old('tahun_terbit') }}" required>
-                            </div>
-                            <div>
-                                <label for="cover">Photo</label>
-                                <input id="cover" type="file" name="cover" accept="image/*">
-                            </div>
-                            <div>
-                                <label for="pengarang">Author</label>
-                                <input id="pengarang" type="text" name="pengarang" value="{{ old('pengarang') }}" required>
-                            </div>
-                            <div>
-                                <label for="penerbit">Publisher</label>
-                                <input id="penerbit" type="text" name="penerbit" value="{{ old('penerbit') }}" required>
-                            </div>
-                            <div>
-                                <label for="isbn">NISBN</label>
-                                <input id="isbn" type="text" name="isbn" value="{{ old('isbn') }}" required>
-                            </div>
-                            <div style="grid-column: span 2;">
-                                <label for="sinopsis">Synopsis</label>
-                                <textarea id="sinopsis" name="sinopsis">{{ old('sinopsis') }}</textarea>
-                            </div>
-                        </div>
-                        <div class="button-row">
-                            <a href="{{ route('admin.home') }}" class="btn-secondary">Cancel</a>
-                            <button type="submit" class="btn-primary">Add</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
+
+<div class="main-wrapper">
+
+```
+<!-- Sidebar -->
+<div class="sidebar">
+    LibrAspire
+</div>
+
+<!-- Content -->
+<div class="content">
+    <h1 class="title">Add New Book</h1>
+
+    <form action="{{ route('admin.buku.store') }}" method="POST" enctype="multipart/form-data" class="form-box">
+        @csrf
+
+        <div class="form-group">
+            <label>Title</label>
+            <input type="text" name="judul" value="{{ old('judul') }}" required>
         </div>
-        <div class="footer">
-            <p>© 2025 LibrAspire. All rights reserved.</p>
-            <p>Email | Twitter | Facebook | Instagram</p>
-            <p>Jl Raya ITS, Surabaya, Indonesia</p>
+
+        <div class="form-group">
+            <label>Year</label>
+            <input type="number" name="tahun_terbit" value="{{ old('tahun_terbit') }}" required>
         </div>
-    </div>
+
+        <div class="form-group">
+            <label>Photo</label>
+            <input type="file" name="cover" accept="image/*">
+        </div>
+
+        <div class="form-group">
+            <label>Author</label>
+            <input type="text" name="pengarang" value="{{ old('pengarang') }}" required>
+        </div>
+
+        <div class="form-group">
+            <label>Publisher</label>
+            <input type="text" name="penerbit" value="{{ old('penerbit') }}" required>
+        </div>
+        <div class="form-group"> <label>Category</label> 
+            <select name="category_id">
+                <option value="">-- Pilih Kategori --</option>
+                @foreach($kategori as $k)
+                    <option value="{{ $k->id }}">{{ $k->nama }}</option>
+                @endforeach
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>NISBN</label>
+            <input type="text" name="isbn" value="{{ old('isbn') }}" required>
+        </div>
+
+        <div class="form-group full">
+            <label>Synopsis</label>
+            <textarea name="sinopsis" rows="4">{{ old('sinopsis') }}</textarea>
+        </div>
+
+        <div class="button-group">
+            <a href="{{ route('admin.home') }}" class="btn cancel">Cancel</a>
+            <button type="submit" class="btn submit">Add</button>
+        </div>
+    </form>
+</div>
+```
+
+</div>
+
+<!-- Footer -->
+
+<div class="footer">
+    <p>© 2025 LibrAspire. All rights reserved.</p>
+    <p>Email | Twitter | Facebook | instagram</p>
+    <p>Jl Raya ITS, Surabaya, Indonesia</p>
+</div>
+
 </body>
 </html>
