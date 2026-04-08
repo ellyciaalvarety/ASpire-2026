@@ -10,16 +10,12 @@ class KategoriSeeder extends Seeder
     public function run()
     {
         $kategori = [
-            ['name' => 'Fiksi'],
-            ['name' => 'Non-Fiksi'],
-            ['name' => 'Pendidikan'],
-            ['name' => 'Teknologi'],
-            ['name' => 'Sejarah'],
-            ['name' => 'Biografi'],
-            ['name' => 'Agama'],
-            ['name' => 'Komik'],
-            ['name' => 'Majalah'],
-            ['name' => 'Novel'],
+            ['name' => 'Self-Growth'],
+            ['name' => 'Fiction & Literature'],
+            ['name' => 'Science & Tech'],
+            ['name' => 'Life & History'],
+            ['name' => 'Leisure & Hobbies'],
+            ['name' => 'Religion'],
         ];
 
         DB::table('kategori')->insert($kategori);

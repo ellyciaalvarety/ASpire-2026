@@ -12,8 +12,8 @@ class SuperAdminSeeder extends Seeder
     {
         DB::table('users')->insert([
            'name' => 'Super Admin',
-            'email' => 'superadmin@example.com',
-            'password' => Hash::make('password123'),
+            'email' => 'superadmin@gmail.com',
+            'password' => Hash::make('123456'),
             'role' => 'superadmin',
             'foto' => 'default.jpg',
             'created_at' => now(),

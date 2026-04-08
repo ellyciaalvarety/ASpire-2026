@@ -18,7 +18,7 @@ return new class extends Migration
         $table->string('pengarang');
         $table->string('penerbit');
         $table->integer('tahun_terbit');
-        $table->foreignId('kategori_id')->constrained()->cascadeOnDelete();
+        $table->foreignId('kategori_id')->constrained('kategori')->cascadeOnDelete();
         $table->text('sinopsis')->nullable(); 
         $table->string('cover')->nullable(); 
         $table->integer('stock')->default(0);
