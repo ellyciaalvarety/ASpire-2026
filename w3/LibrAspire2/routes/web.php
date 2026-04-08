@@ -7,6 +7,7 @@ use App\Http\Controllers\BukuController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PeminjamanController;
 
+
 /*
 |--------------------------------------------------------------------------
 | PUBLIC
@@ -59,8 +60,15 @@ Route::middleware('auth')->group(function () {
     */
     Route::middleware('admin')->prefix('admin')->group(function () {
 
+        
+
         Route::get('/', function () {
-            return view('admin.home');
+            $controller = app(\App\Http\Controllers\BukuController::class);
+
+            $latestBooks = $controller->latest();
+            $bukuPopular = $controller->popular();
+
+            return view('admin.home', compact('latestBooks', 'bukuPopular'));
         })->name('admin.home');
 
         // Buku Admin
@@ -125,13 +133,13 @@ Route::middleware('auth')->group(function () {
     Route::middleware('superadmin')->prefix('superadmin')->group(function () {
 
         Route::get('/', function () {
-    $controller = app(\App\Http\Controllers\BukuController::class);
+            $controller = app(\App\Http\Controllers\BukuController::class);
 
-    $latestBooks = $controller->latest();
-    $bukuPopular = $controller->popular();
+            $latestBooks = $controller->latest();
+            $bukuPopular = $controller->popular();
 
-    return view('superadmin.home', compact('latestBooks', 'bukuPopular'));
-});
+            return view('superadmin.home', compact('latestBooks', 'bukuPopular'));
+        });
 
         // MANAGE USER
         Route::get('/user', [UserController::class, 'index'])->name('superadmin.user.index');
