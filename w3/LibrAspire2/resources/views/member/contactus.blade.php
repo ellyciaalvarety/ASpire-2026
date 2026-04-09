@@ -25,6 +25,7 @@
             font-weight: 700;
             font-size: 24px;
             color: #ffffff;
+            text-decoration: none;
         }
 
         .nav-links {
@@ -51,6 +52,7 @@
             align-items: center;
             min-height: calc(100vh - 104px);
             padding: 0 24px;
+            background: #EEF2F7;
         }
 
         .contact-card {
@@ -134,7 +136,7 @@
 </head>
 <body>
     <div class="navbar">
-        <div class="logo">LibrAspire</div>
+        <a href="{{ route('member.home') }}" class="logo">LibrAspire</a>
         <div class="nav-links">
             <a href="{{ route('member.home') }}">Home</a>
             <a href="{{ route('member.contact') }}" class="active">Contact</a>

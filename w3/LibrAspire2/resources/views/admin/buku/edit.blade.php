@@ -47,6 +47,10 @@
             font-size: 26px;
             letter-spacing: -0.04em;
         }
+        .panel-left h1 a {
+            color: inherit;
+            text-decoration: none;
+        }
         .panel-left p {
             margin-top: 18px;
             font-size: 14px;
@@ -135,7 +139,7 @@
         <div class="page-content">
             <div class="card-form">
                 <div class="panel-left">
-                    <h1>LibrAspire</h1>
+                    <h1><a href="{{ route('admin.home') }}">LibrAspire</a></h1>
                     <p>Edit detail buku di halaman ini, lalu simpan untuk memperbarui koleksi admin.</p>
                 </div>
                 <div class="form-area">

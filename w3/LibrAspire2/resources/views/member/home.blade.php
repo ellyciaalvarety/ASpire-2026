@@ -28,6 +28,7 @@
             font-size: 24px;
             letter-spacing: -0.04em;
             color: #0f234d;
+            text-decoration: none;
         }
 
         .nav-links {
@@ -73,7 +74,7 @@
 
         .books {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 22px;
             margin-bottom: 40px;
         }
@@ -86,6 +87,9 @@
             transition: transform .3s ease, box-shadow .3s ease;
             text-decoration: none;
             color: inherit;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
 
         .card:hover {
@@ -101,18 +105,25 @@
 
         .card-body {
             padding: 18px 16px 22px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            flex: 1;
         }
 
         .card-body h4 {
             margin: 0 0 8px;
             font-size: 16px;
             color: #0f234d;
+            line-height: 1.35;
+            min-height: calc(1.35em * 2);
+            overflow-wrap: anywhere;
         }
 
         .card-body small {
             display: block;
             color: #67728b;
-            margin-bottom: 6px;
+            margin-bottom: 0;
             font-size: 13px;
         }
 
@@ -126,29 +137,37 @@
             border-radius: 999px;
             font-size: 12px;
             font-weight: 700;
-            margin-top: 8px;
+            margin-top: auto;
+            align-self: flex-start;
         }
 
         .categories {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(190px, 220px));
             gap: 18px;
             margin-bottom: 40px;
+            justify-content: center;
         }
 
         .category {
             background: #0f234d;
             color: #fff;
             border-radius: 16px;
-            padding: 22px 18px;
+            padding: 18px 16px;
             text-align: center;
-            min-height: 120px;
+            min-height: 96px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
 
         .category h4 {
-            margin: 0 0 12px;
+            margin: 0 0 6px;
             font-size: 15px;
             letter-spacing: 0.03em;
+            line-height: 1.35;
+            overflow-wrap: anywhere;
         }
 
         .category p {
@@ -179,12 +198,11 @@
 </head>
 <body>
     <div class="navbar">
-        <div class="logo">LibrAspire</div>
+        <a href="{{ route('member.home') }}" class="logo">LibrAspire</a>
 
         <input type="text" class="search" placeholder="Insert Book Title">
 
         <div class="nav-links">
-            <a href="{{ route('member.home') }}" class="active">Home</a>
             <a href="{{ route('member.contact') }}">Contact</a>
             <a href="{{ route('member.profile') }}">Profile</a>
         </div>
@@ -194,7 +212,7 @@
         <h2>Popular Now</h2>
         <div class="books">
             @forelse ($bukuPopular ?? [] as $buku)
-                <div class="card">
+                <a class="card" href="{{ route('member.buku.detail', $buku->id) }}">
                     @php
                         if (!empty($buku->cover_url)) {
                             $coverUrl = $buku->cover_url;
@@ -211,7 +229,7 @@
                         <small>{{ $buku->tahun_terbit ?? '-' }}</small>
                         <span class="badge">{{ $buku->total_pinjam ?? 0 }}x dipinjam</span>
                     </div>
-                </div>
+                </a>
             @empty
                 <p>Tidak ada buku populer minggu ini.</p>
             @endforelse
@@ -234,7 +252,7 @@
         <h2>Our Latest Collection</h2>
         <div class="books">
             @forelse ($latestBooks ?? [] as $item)
-                <div class="card">
+                <a class="card" href="{{ route('member.buku.detail', $item->id) }}">
                     @php
                         if (!empty($item->cover_url)) {
                             $coverUrl = $item->cover_url;
@@ -251,7 +269,7 @@
                         <small>{{ $item->tahun_terbit ?? '-' }}</small>
                         <span class="badge">Stock: {{ $item->stock ?? 0 }}</span>
                     </div>
-                </div>
+                </a>
             @empty
                 <p>Tidak ada buku terbaru.</p>
             @endforelse

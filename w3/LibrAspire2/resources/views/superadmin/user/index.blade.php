@@ -5,12 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LibrAspire - Users</title>
     <style>
+        html, body {
+            min-height: 100%;
+        }
+
         body {
             margin: 0;
             font-family: Arial, sans-serif;
             background: #f5f6f8;
             background-image: radial-gradient(#d1d1d1 0.5px, transparent 0.5px);
             background-size: 20px 20px;
+            min-height: 100dvh;
+            display: flex;
+            flex-direction: column;
         }
 
         .navbar {
@@ -25,6 +32,7 @@
             font-weight: bold;
             font-size: 22px;
             color: #1b2a4e;
+            text-decoration: none;
         }
 
         .nav-links a {
@@ -108,7 +116,7 @@
             color: white;
             text-align: center;
             padding: 40px;
-            margin-top: 50px;
+            margin-top: auto;
         }
         
         .footer p { margin: 5px 0; font-size: 14px; opacity: 0.8; }
@@ -117,9 +125,8 @@
 <body>
 
 <div class="navbar">
-    <div class="logo">LibrAspire</div>
+    <a href="{{ route('superadmin.home') }}" class="logo">LibrAspire</a>
     <div class="nav-links">
-        <a href="{{ route('superadmin.home') }}">Home</a>
         <a href="{{ route('superadmin.user.index') }}" class="active">Users</a>
         <a href="{{ route('superadmin.profile') }}">Profile</a>
     </div>

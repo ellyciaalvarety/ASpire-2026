@@ -4,10 +4,17 @@
     <meta charset="UTF-8">
     <title>Request</title>
     <style>
+        html, body {
+            min-height: 100%;
+        }
+
         body {
             margin: 0;
             font-family: Arial, sans-serif;
             background-color: #f5f5f5;
+            min-height: 100dvh;
+            display: flex;
+            flex-direction: column;
         }
 
         /* Navbar */
@@ -22,6 +29,7 @@
             font-weight: bold;
             font-size: 22px;
             color: #1e3a8a;
+            text-decoration: none;
         }
 
         .nav-links a {
@@ -105,7 +113,7 @@
             color: white;
             text-align: center;
             padding: 30px;
-            margin-top: 50px;
+            margin-top: auto;
         }
 
         .footer small {
@@ -114,67 +122,66 @@
             color: #ddd;
         }
         /* Modal */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 999;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.4);
-}
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.4);
+        }
 
-.modal-content {
-    background: #eee;
-    width: 400px;
-    margin: 100px auto;
-    padding: 30px;
-    border-radius: 20px;
-    position: relative;
-    text-align: left;
-}
+        .modal-content {
+            background: #eee;
+            width: 400px;
+            margin: 100px auto;
+            padding: 30px;
+            border-radius: 20px;
+            position: relative;
+            text-align: left;
+        }
 
-.modal-content h2 {
-    text-align: center;
-}
+        .modal-content h2 {
+            text-align: center;
+        }
 
-.input-status {
-    width: 100%;
-    padding: 8px;
-    border-radius: 20px;
-    border: none;
-    text-align: center;
-}
+        .input-status {
+            width: 100%;
+            padding: 8px;
+            border-radius: 20px;
+            border: none;
+            text-align: center;
+        }
 
-.btn-save {
-    width: 100%;
-    background: #1e3a8a;
-    color: white;
-    padding: 10px;
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
-}
+        .btn-save {
+            width: 100%;
+            background: #1e3a8a;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+        }
 
-.close {
-    position: absolute;
-    right: 20px;
-    top: 10px;
-    font-size: 20px;
-    cursor: pointer;
-}
+        .close {
+            position: absolute;
+            right: 20px;
+            top: 10px;
+            font-size: 20px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
 
     <!-- Navbar -->
     <div class="navbar">
-        <div class="logo">LibrAspire</div>
+        <a href="{{ route('admin.home') }}" class="logo">LibrAspire</a>
         <div class="nav-links">
-            <a  href="{{ route('admin.home') }}">Home</a>
             <a href="#" class="active">Request</a>
-            <a href="#">Profile</a>
+            <a href="{{ route('admin.profile') }}">Profile</a>
         </div>
     </div>
 

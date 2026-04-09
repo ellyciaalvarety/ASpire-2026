@@ -121,8 +121,9 @@ Route::middleware('auth')->group(function () {
 
         // Buku Member
         Route::get('/buku', [BukuController::class, 'index'])->name('member.buku.index');
-        Route::get('/buku/{id}', function () {
-            return view('member.buku.detail');
+        Route::get('/buku/{id}', function ($id) {
+            $buku = \App\Models\Buku::with('kategori')->findOrFail($id);
+            return view('member.buku.detail', compact('buku'));
         })->name('member.buku.detail');
 
         Route::post('/pinjam/{id}', [PeminjamanController::class, 'store'])->name('member.pinjam');

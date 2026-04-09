@@ -6,7 +6,7 @@
     <style>
         body { margin: 0; font-family: Arial, sans-serif; background: #f5f6f8; background-image: radial-gradient(#d1d1d1 0.5px, transparent 0.5px); background-size: 20px 20px; }
         .navbar { display: flex; justify-content: space-between; padding: 20px 50px; align-items: center; }
-        .logo { font-weight: bold; font-size: 22px; color: #1b2a4e; }
+        .logo { font-weight: bold; font-size: 22px; color: #1b2a4e; text-decoration: none; }
         .nav-links a { margin-left: 30px; text-decoration: none; color: #666; }
         .nav-links a.active { color: #1b2a4e; font-weight: bold; }
 
@@ -39,9 +39,8 @@
 </head>
 <body>
     <div class="navbar">
-        <div class="logo">LibrAspire</div>
+        <a href="{{ route('member.home') }}" class="logo">LibrAspire</a>
         <div class="nav-links">
-            <a href="{{ route('member.home') }}">Home</a>
             <a href="{{ route('member.contact') }}">Contact</a>
             <a href="{{ route('member.profile') }}" class="active">Profile</a>
         </div>

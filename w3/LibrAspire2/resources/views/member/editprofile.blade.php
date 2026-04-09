@@ -24,10 +24,12 @@
             flex-direction: column;
         }
 
-        .sidebar h2 {
+        .sidebar .brand {
             font-size: 24px;
             margin: 0;
             font-weight: bold;
+            color: white;
+            text-decoration: none;
         }
 
         .main-content {
@@ -133,7 +135,7 @@
 </head>
 <body>
     <div class="sidebar">
-        <h2>LibrAspire</h2>
+        <a href="{{ route('member.home') }}" class="brand">LibrAspire</a>
     </div>
 
     <div class="main-content">
