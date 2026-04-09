@@ -140,7 +140,15 @@
     @forelse ($bukuPopular ?? [] as $buku)
         <a class="card" href="{{ route('superadmin.buku.detail', $buku->id) }}">
             @php
-                $coverUrl = $buku->cover_url ?? asset('images/default.jpg');
+           
+
+                if (!empty($buku->cover_url)) {
+                    $coverUrl = $buku->cover_url;
+                } elseif (!empty($buku->cover)) {
+                    $coverUrl = asset('storage/' . $buku->cover);
+                } else {
+                    $coverUrl = asset('images/default.jpg');
+                }
             @endphp
 
             <img src="{{ $coverUrl }}" alt="{{ $buku->judul }}">
