@@ -102,7 +102,12 @@ Route::middleware('auth')->group(function () {
     Route::middleware('member')->prefix('member')->group(function () {
 
         Route::get('/', function () {
-            return view('member.home');
+            $controller = app(\App\Http\Controllers\BukuController::class);
+
+            $latestBooks = $controller->latest();
+            $bukuPopular = $controller->popular();
+
+            return view('member.home', compact('latestBooks', 'bukuPopular'));
         })->name('member.home');
 
         Route::get('/contact', function () {

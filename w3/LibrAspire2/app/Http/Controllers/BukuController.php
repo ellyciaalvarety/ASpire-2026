@@ -44,15 +44,15 @@ return view('admin.home', compact('latestBooks', 'bukuPopular'));
         $coverPath = null;
 
         if ($request->hasFile('cover')) {
-    $file = $request->file('cover');
+        $file = $request->file('cover');
 
-    // optional cek manual
-    if (!in_array($file->extension(), ['jpg', 'jpeg', 'png'])) {
-        return back()->withErrors(['cover' => 'Format harus JPG/PNG']);
+        // optional cek manual
+        if (!in_array($file->extension(), ['jpg', 'jpeg', 'png'])) {
+            return back()->withErrors(['cover' => 'Format harus JPG/PNG']);
+        }
+
+        $coverPath = $file->store('covers', 'public');
     }
-
-    $coverPath = $file->store('covers', 'public');
-}
 
         Buku::create([
             'judul' => $request->judul,
