@@ -68,6 +68,14 @@
             margin: 10px 0 5px;
         }
 
+        .card h4 a {
+            text-decoration: none;
+            color: #1b2a4e;
+        }
+        .card h4 a:hover {
+            text-decoration: underline;
+        }
+
         .btn {
             background: #1b2a4e;
             color: white;
@@ -125,15 +133,11 @@
     @forelse ($bukuPopular ?? [] as $buku)
         <div class="card">
             @php
-                $coverUrl = asset('images/default.jpg'); // default
-
-                if($buku->cover) {
-                    $coverUrl = asset('storage/' . $buku->cover); // covers/... termasuk upload & seeder
-                }
+                $coverUrl = $buku->cover_url ?? asset('images/default.jpg');
             @endphp
 
             <img src="{{ $coverUrl }}" alt="{{ $buku->judul }}">
-            <h4>{{ $buku->judul }}</h4>
+            <h4><a href="{{ route('superadmin.buku.detail', $buku->id) }}">{{ $buku->judul }}</a></h4>
             <small>{{ $buku->pengarang ?? '-' }}</small><br>
             <small>{{ $buku->tahun_terbit ?? '-' }}</small><br>
 
@@ -151,14 +155,11 @@
     @forelse ($latestBooks ?? [] as $item)
     <div class="card">
         @php
-            $coverUrl = asset('images/default.jpg'); 
-            if($item->cover) {
-                $coverUrl = asset('storage/' . $item->cover); 
-            }
+            $coverUrl = $item->cover_url ?? asset('images/default.jpg');
         @endphp
 
         <img src="{{ $coverUrl }}" alt="{{ $item->judul }}">
-        <h4>{{ $item->judul }}</h4>
+        <h4><a href="{{ route('superadmin.buku.detail', $item->id) }}">{{ $item->judul }}</a></h4>
         <small>{{ $item->pengarang ?? '-' }}</small><br>
         <small>{{ $item->tahun_terbit ?? '-' }}</small><br>
 

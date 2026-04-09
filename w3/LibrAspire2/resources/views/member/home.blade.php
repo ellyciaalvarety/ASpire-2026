@@ -125,7 +125,7 @@
 <div class="books">
     @forelse ($bukuPopular as $buku)
         <div class="card">
-            <img src="{{ $buku->cover ? asset($buku->cover) : asset('images/default.jpg') }}">
+            <img src="{{ $buku->cover_url ?? asset('images/default.jpg') }}">
 
             <h4>{{ $buku->judul }}</h4>
 
@@ -147,7 +147,7 @@
 <div class="books">
     @forelse ($latestBooks as $item)
         <div class="card">
-            <img src="{{ $item->cover ? asset($item->cover) : asset('images/default.jpg') }}">
+            <img src="{{ $item->cover_url ?? asset('images/default.jpg') }}">
 
             <h4>{{ $item->judul }}</h4>
 

@@ -142,11 +142,7 @@
     @forelse ($bukuPopular ?? [] as $buku)
         <div class="card">
             @php
-                $coverUrl = asset('images/default.jpg'); // default
-
-                if($buku->cover) {
-                    $coverUrl = asset('storage/' . $buku->cover); // covers/... termasuk upload & seeder
-                }
+                $coverUrl = $buku->cover_url ?? asset('images/default.jpg');
             @endphp
 
             <img src="{{ $coverUrl }}" alt="{{ $buku->judul }}">
@@ -168,10 +164,7 @@
     @forelse ($latestBooks ?? [] as $item)
     <div class="card">
         @php
-            $coverUrl = asset('images/default.jpg'); 
-            if($item->cover) {
-                $coverUrl = asset('storage/' . $item->cover); 
-            }
+            $coverUrl = $item->cover_url ?? asset('images/default.jpg');
         @endphp
 
         <img src="{{ $coverUrl }}" alt="{{ $item->judul }}">
