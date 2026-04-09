@@ -26,22 +26,22 @@ class PeminjamanController extends Controller
     public function index()
     {
         $data = Peminjaman::with('user','buku')->get();
-        return view('peminjaman.index', compact('data'));
+        return view('admin.peminjaman.index', compact('data'));
     }
 
     // Update status (admin)
-    public function updateStatus($id, $status)
-    {
-        $pinjam = Peminjaman::findOrFail($id);
+    public function updateStatus(Request $request, $id)
+{
+    $pinjam = Peminjaman::findOrFail($id);
 
-        if ($status == 'approved') {
-            $pinjam->tanggal_kembali = now()->addDays(7);
-        }
-
-        $pinjam->update([
-            'status' => $status
-        ]);
-
-        return back();
+    if ($request->status == 'approved') {
+        $pinjam->tanggal_kembali = now()->addDays(7);
     }
+
+    $pinjam->update([
+        'status' => $request->status
+    ]);
+
+    return back();
+}
 }
