@@ -173,6 +173,10 @@ Route::middleware('auth')->group(function () {
             return view('superadmin.editprofile', ['user' => Auth::user()]);
         })->name('superadmin.editprofile');
 
+        Route::get('/buku/{id}', function ($id) {
+            $buku = \App\Models\Buku::with('kategori')->findOrFail($id);
+            return view('superadmin.buku.detail', compact('buku'));
+        })->name('superadmin.buku.detail');
 
     });
 

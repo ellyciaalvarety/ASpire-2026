@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-
 class Buku extends Model
 {
     protected $table = 'buku';
@@ -29,16 +28,20 @@ class Buku extends Model
         }
 
         $coverName = basename($this->cover);
+
+        // cek di public/images
         $publicImagePath = public_path('images/' . $coverName);
         if (file_exists($publicImagePath)) {
             return asset('images/' . $coverName);
         }
 
+        // cek langsung di public
         $publicCoverPath = public_path($this->cover);
         if (file_exists($publicCoverPath)) {
             return asset($this->cover);
         }
 
+        // cek di storage
         $storageCoverPath = public_path('storage/' . $this->cover);
         if (file_exists($storageCoverPath)) {
             return asset('storage/' . $this->cover);
@@ -46,14 +49,14 @@ class Buku extends Model
 
         return null;
     }
-    
+
     public function peminjaman()
     {
         return $this->hasMany(Peminjaman::class);
     }
+
     public function kategori()
     {
         return $this->belongsTo(Kategori::class, 'kategori_id');
     }
 }
-
