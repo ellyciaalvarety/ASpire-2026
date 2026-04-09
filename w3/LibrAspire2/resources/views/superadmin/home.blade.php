@@ -43,40 +43,52 @@
         }
 
         /* BOOK GRID */
-        .books {
-            display: flex;
-            gap: 20px;
-            padding: 20px 50px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
+    .books {
+        display: flex;
+        gap: 20px;
+        padding: 20px 50px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
 
-        .card {
-            background: white;
-            border-radius: 10px;
-            padding: 10px;
-            width: 150px;
-            text-align: center;
-        }
+    .card {
+        background: white;
+        border-radius: 10px;
+        padding: 10px;
+        width: 150px;
+        text-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        text-decoration: none; /* nonaktifkan underline link */
+        color: inherit; /* gunakan warna teks normal */
+    }
 
-        .card img {
-            width: 100%;
-            border-radius: 8px;
-        }
+    .card:hover {
+        transform: scale(1.1); /* membesar */
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        z-index: 10; /* agar hover terlihat di atas */
+    }
 
-        .card h4 {
-            margin: 10px 0 5px;
-        }
+    .card img {
+        width: 100%;
+        border-radius: 8px;
+    }
 
-        .btn {
-            background: #1b2a4e;
-            color: white;
-            padding: 5px 10px;
-            border-radius: 10px;
-            font-size: 12px;
-            display: inline-block;
-            margin-top: 5px;
-        }
+    .card h4, .card small, .btn {
+        display: block;
+        margin: 5px 0;
+        text-decoration: none; /* pastikan teks tidak seperti link */
+        color: inherit; /* warna tetap normal */
+    }
+
+    .btn {
+        background: #1b2a4e;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 10px;
+        font-size: 12px;
+        margin-top: 5px;
+        display: inline-block;
+    }
 
         /* CATEGORY */
         .categories {
@@ -123,7 +135,7 @@
 <h2>Popular Now 🔥</h2>
 <div class="books">
     @forelse ($bukuPopular ?? [] as $buku)
-        <div class="card">
+        <a class="card" href="{{ route('superadmin.buku.detail', $buku->id) }}">
             @php
                 $coverUrl = asset('images/default.jpg'); // default
 
@@ -133,6 +145,7 @@
             @endphp
 
             <img src="{{ $coverUrl }}" alt="{{ $buku->judul }}">
+
             <h4>{{ $buku->judul }}</h4>
             <small>{{ $buku->pengarang ?? '-' }}</small><br>
             <small>{{ $buku->tahun_terbit ?? '-' }}</small><br>
@@ -140,7 +153,7 @@
             <span class="btn">
                 {{ $buku->total_pinjam ?? 0 }}x dipinjam
             </span>
-        </div>
+        </a>
     @empty
         <p>Tidak ada buku populer minggu ini.</p>
     @endforelse
@@ -149,7 +162,7 @@
 <h2>Our Latest Collection 📚</h2>
 <div class="books">
     @forelse ($latestBooks ?? [] as $item)
-    <div class="card">
+     <a class="card" href="{{ route('superadmin.buku.detail', $buku->id) }}">
         @php
             $coverUrl = asset('images/default.jpg'); 
             if($item->cover) {
@@ -163,7 +176,7 @@
         <small>{{ $item->tahun_terbit ?? '-' }}</small><br>
 
         <span class="btn">Stock: {{ $item->stock ?? 0 }}</span>
-    </div>
+        </a>
 @empty
     <p>Tidak ada buku terbaru.</p>
 @endforelse
