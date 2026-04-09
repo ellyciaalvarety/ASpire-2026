@@ -13,7 +13,10 @@ class BukuController extends Controller
     public function index()
     {
         $buku = Buku::with('kategori')->get();
-        return view('buku.index', compact('buku'));
+       $latestBooks = $this->latest();
+$bukuPopular = $this->popular();
+
+return view('admin.home', compact('latestBooks', 'bukuPopular'));
     }
 
     // Form tambah buku
@@ -35,14 +38,21 @@ class BukuController extends Controller
             'tahun_terbit' => 'required|numeric',
             'kategori_id' => 'required',
             'stock' => 'nullable|integer|min:0',
-            'cover' => 'image|mimes:jpg,jpeg,png|max:2048'
-        ]);
+           'cover' => 'nullable|file|mimes:jpg,jpeg,png|max:2048'  
+                 ]);
 
         $coverPath = null;
 
         if ($request->hasFile('cover')) {
-            $coverPath = $request->file('cover')->store('covers', 'public');
-        }
+    $file = $request->file('cover');
+
+    // optional cek manual
+    if (!in_array($file->extension(), ['jpg', 'jpeg', 'png'])) {
+        return back()->withErrors(['cover' => 'Format harus JPG/PNG']);
+    }
+
+    $coverPath = $file->store('covers', 'public');
+}
 
         Buku::create([
             'judul' => $request->judul,

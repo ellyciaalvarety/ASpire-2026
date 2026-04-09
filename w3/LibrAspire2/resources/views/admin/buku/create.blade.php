@@ -142,6 +142,16 @@ body {
 <div class="content">
     <h1 class="title">Add New Book</h1>
 
+    @if ($errors->any())
+    <div style="color:red; margin-bottom:20px;">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
     <form action="{{ route('admin.buku.store') }}" method="POST" enctype="multipart/form-data" class="form-box">
         @csrf
 

@@ -172,7 +172,7 @@
     <div class="navbar">
         <div class="logo">LibrAspire</div>
         <div class="nav-links">
-            <a href="#">Home</a>
+            <a  href="{{ route('admin.home') }}">Home</a>
             <a href="#" class="active">Request</a>
             <a href="#">Profile</a>
         </div>

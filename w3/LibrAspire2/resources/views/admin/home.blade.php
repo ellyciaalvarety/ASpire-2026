@@ -137,15 +137,20 @@
     </div>
 </div>
 
-<!-- POPULAR -->
 <h2>Popular Now 🔥</h2>
 <div class="books">
     @forelse ($bukuPopular ?? [] as $buku)
         <div class="card">
-            <img src="{{ $buku->cover ? asset($buku->cover) : asset('images/default.jpg') }}">
+            @php
+                $coverUrl = asset('images/default.jpg'); // default
 
+                if($buku->cover) {
+                    $coverUrl = asset('storage/' . $buku->cover); // covers/... termasuk upload & seeder
+                }
+            @endphp
+
+            <img src="{{ $coverUrl }}" alt="{{ $buku->judul }}">
             <h4>{{ $buku->judul }}</h4>
-
             <small>{{ $buku->pengarang ?? '-' }}</small><br>
             <small>{{ $buku->tahun_terbit ?? '-' }}</small><br>
 
@@ -158,27 +163,30 @@
     @endforelse
 </div>
 
-
-<!-- LATEST -->
 <h2>Our Latest Collection 📚</h2>
 <div class="books">
     @forelse ($latestBooks ?? [] as $item)
-        <div class="card">
-            <img src="{{ $item->cover ? asset($item->cover) : asset('images/default.jpg') }}">
+    <div class="card">
+        @php
+            $coverUrl = asset('images/default.jpg'); 
+            if($item->cover) {
+                $coverUrl = asset('storage/' . $item->cover); 
+            }
+        @endphp
 
-            <h4>{{ $item->judul }}</h4>
+        <img src="{{ $coverUrl }}" alt="{{ $item->judul }}">
+        <h4>{{ $item->judul }}</h4>
+        <small>{{ $item->pengarang ?? '-' }}</small><br>
+        <small>{{ $item->tahun_terbit ?? '-' }}</small><br>
 
-            <small>{{ $item->pengarang ?? '-' }}</small><br>
-            <small>{{ $item->tahun_terbit ?? '-' }}</small><br>
-            
-            <span class="btn">Stock: {{ $item->stock ?? 0 }}</span>
-        </div>
-    @empty
-        <p>Tidak ada buku terbaru.</p>
-    @endforelse
+        <span class="btn">Stock: {{ $item->stock ?? 0 }}</span>
+    </div>
+@empty
+    <p>Tidak ada buku terbaru.</p>
+@endforelse
 </div>
- <a href="{{ route('admin.buku.create') }}" class="floating-add" title="Add New Book">+</a>
 
+<a href="{{ route('admin.buku.create') }}" class="floating-add" title="Add New Book">+</a>
 <!-- FOOTER -->
 <div class="footer">
     <p>© 2025 LibrAspire. All rights reserved.</p>
