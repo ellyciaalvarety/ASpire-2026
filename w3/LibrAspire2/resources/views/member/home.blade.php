@@ -2,180 +2,266 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>LibrAspire</title>
+    <title>LibrAspire - Member Home</title>
     <style>
         body {
             margin: 0;
-            font-family: Arial, sans-serif;
-            background: #f5f6f8;
+            font-family: 'Poppins', sans-serif;
+            background: #eff3f8;
+            color: #10214b;
         }
 
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 50px;
+            padding: 24px 50px;
+            background: #fff;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 10;
         }
 
         .logo {
-            font-weight: bold;
-            font-size: 22px;
-            color: #1b2a4e;
+            font-weight: 700;
+            font-size: 24px;
+            letter-spacing: -0.04em;
+            color: #0f234d;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
         }
 
         .nav-links a {
-            margin-left: 30px;
             text-decoration: none;
-            color: #333;
+            color: #4f5870;
+            font-weight: 600;
+            transition: color .2s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #0f234d;
         }
 
         .search {
-            padding: 8px 15px;
-            border-radius: 20px;
-            border: 1px solid #ccc;
-            width: 250px;
+            padding: 12px 18px;
+            border-radius: 999px;
+            border: 1px solid #d6dbe8;
+            width: 280px;
+            outline: none;
+            color: #10214b;
+            font-size: 14px;
         }
 
-        h2 {
+        .section {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 30px 24px;
+        }
+
+        .section h2 {
+            margin: 0 auto 18px;
             text-align: center;
-            margin-top: 30px;
+            font-size: 32px;
+            color: #10214b;
         }
 
         .books {
-            display: flex;
-            gap: 20px;
-            padding: 20px 50px;
-            flex-wrap: wrap;
-            justify-content: center;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 22px;
+            margin-bottom: 40px;
         }
 
         .card {
-            background: white;
-            border-radius: 10px;
-            padding: 10px;
-            width: 150px;
-            text-align: center;
+            background: #fff;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(17, 31, 63, 0.08);
+            transition: transform .3s ease, box-shadow .3s ease;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 26px 50px rgba(17, 31, 63, 0.12);
         }
 
         .card img {
             width: 100%;
-            border-radius: 8px;
+            height: 220px;
+            object-fit: cover;
         }
 
-        .card h4 {
-            margin: 10px 0 5px;
+        .card-body {
+            padding: 18px 16px 22px;
         }
 
-        .btn {
-            background: #1b2a4e;
-            color: white;
-            padding: 5px 10px;
-            border-radius: 10px;
+        .card-body h4 {
+            margin: 0 0 8px;
+            font-size: 16px;
+            color: #0f234d;
+        }
+
+        .card-body small {
+            display: block;
+            color: #67728b;
+            margin-bottom: 6px;
+            font-size: 13px;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 14px;
+            background: #0f234d;
+            color: #fff;
+            border-radius: 999px;
             font-size: 12px;
-            display: inline-block;
-            margin-top: 5px;
+            font-weight: 700;
+            margin-top: 8px;
         }
 
         .categories {
-            display: flex;
-            gap: 20px;
-            padding: 20px 50px;
-            justify-content: center;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 18px;
+            margin-bottom: 40px;
         }
 
         .category {
-            background: #1b2a4e;
-            color: white;
-            padding: 20px;
-            border-radius: 10px;
-            width: 150px;
+            background: #0f234d;
+            color: #fff;
+            border-radius: 16px;
+            padding: 22px 18px;
             text-align: center;
+            min-height: 120px;
+        }
+
+        .category h4 {
+            margin: 0 0 12px;
+            font-size: 15px;
+            letter-spacing: 0.03em;
+        }
+
+        .category p {
+            margin: 0;
+            font-size: 13px;
+            color: rgba(255,255,255,0.75);
         }
 
         .footer {
-            background: #1b2a4e;
-            color: white;
+            background: #0f234d;
+            color: #ffffff;
             text-align: center;
-            padding: 30px;
-            margin-top: 40px;
+            padding: 34px 24px;
+            margin-top: 20px;
+        }
+
+        .footer p {
+            margin: 8px 0;
+            color: rgba(255,255,255,0.8);
+            font-size: 14px;
+        }
+
+        @media(max-width: 860px) {
+            .navbar { flex-wrap: wrap; gap: 18px; padding: 22px 24px; }
+            .search { width: 100%; max-width: 100%; }
         }
     </style>
 </head>
 <body>
+    <div class="navbar">
+        <div class="logo">LibrAspire</div>
 
-<div class="navbar">
-    <div class="logo">LibrAspire</div>
+        <input type="text" class="search" placeholder="Insert Book Title">
 
-    <input type="text" class="search" placeholder="Insert Book Title">
-
-    <div class="nav-links">
-        <a href="{{ url('/') }}">Home</a>
-        <a href="">Users</a>
-        <a href="">Profile</a>        
+        <div class="nav-links">
+            <a href="{{ route('member.home') }}" class="active">Home</a>
+            <a href="{{ route('member.contact') }}">Contact</a>
+            <a href="{{ route('member.profile') }}">Profile</a>
+        </div>
     </div>
-</div>
 
-<h2>Popular Now 🔥</h2>
-<div class="books">
-    @forelse ($bukuPopular ?? [] as $buku)
-        <div class="card">
-            @php
-           
-
-                if (!empty($buku->cover_url)) {
-                    $coverUrl = $buku->cover_url;
-                } elseif (!empty($buku->cover)) {
-                    $coverUrl = asset('storage/' . $buku->cover);
-                } else {
-                    $coverUrl = asset('images/default.jpg');
-                }
-            @endphp
-
-            <img src="{{ $coverUrl }}" alt="{{ $buku->judul }}">
-            <h4>{{ $buku->judul }}</h4>
-            <small>{{ $buku->pengarang ?? '-' }}</small><br>
-            <small>{{ $buku->tahun_terbit ?? '-' }}</small><br>
-
-            <span class="btn">
-                {{ $buku->total_pinjam ?? 0 }}x dipinjam
-            </span>
+    <section class="section">
+        <h2>Popular Now</h2>
+        <div class="books">
+            @forelse ($bukuPopular ?? [] as $buku)
+                <div class="card">
+                    @php
+                        if (!empty($buku->cover_url)) {
+                            $coverUrl = $buku->cover_url;
+                        } elseif (!empty($buku->cover)) {
+                            $coverUrl = asset('storage/' . $buku->cover);
+                        } else {
+                            $coverUrl = asset('images/default.jpg');
+                        }
+                    @endphp
+                    <img src="{{ $coverUrl }}" alt="{{ $buku->judul }}">
+                    <div class="card-body">
+                        <h4>{{ $buku->judul }}</h4>
+                        <small>{{ $buku->pengarang ?? '-' }}</small>
+                        <small>{{ $buku->tahun_terbit ?? '-' }}</small>
+                        <span class="badge">{{ $buku->total_pinjam ?? 0 }}x dipinjam</span>
+                    </div>
+                </div>
+            @empty
+                <p>Tidak ada buku populer minggu ini.</p>
+            @endforelse
         </div>
-    @empty
-        <p>Tidak ada buku populer minggu ini.</p>
-    @endforelse
-</div>
+    </section>
 
-<h2>Our Latest Collection 📚</h2>
-<div class="books">
-    @forelse ($latestBooks ?? [] as $item)
-        <div class="card">
-            @php
-                if (!empty($item->cover_url)) {
-                    $coverUrl = $item->cover_url;
-                } elseif (!empty($item->cover)) {
-                    $coverUrl = asset('storage/' . $item->cover);
-                } else {
-                    $coverUrl = asset('images/default.jpg');
-                }
-            @endphp
-
-            <img src="{{ $coverUrl }}" alt="{{ $item->judul }}">
-            <h4>{{ $item->judul }}</h4>
-            <small>{{ $item->pengarang ?? '-' }}</small><br>
-            <small>{{ $item->tahun_terbit ?? '-' }}</small><br>
-
-            <span class="btn">Stock: {{ $item->stock ?? 0 }}</span>
+    <section class="section">
+        <h2>Book Categories</h2>
+        <div class="categories">
+            @foreach (['Technology','Self Improvement','Fiction','History','Business'] as $category)
+                <div class="category">
+                    <h4>{{ $category }}</h4>
+                    <p>2500 Books</p>
+                </div>
+            @endforeach
         </div>
-    @empty
-        <p>Tidak ada buku terbaru.</p>
-    @endforelse
-</div>
+    </section>
 
-<div class="footer">
-    <p>© 2025 LibrAspire. All rights reserved.</p>
-    <p>Email | Twitter | Facebook | Instagram</p>
-    <p>Jl Raya ITS, Surabaya, Indonesia</p>
-</div>
+    <section class="section">
+        <h2>Our Latest Collection</h2>
+        <div class="books">
+            @forelse ($latestBooks ?? [] as $item)
+                <div class="card">
+                    @php
+                        if (!empty($item->cover_url)) {
+                            $coverUrl = $item->cover_url;
+                        } elseif (!empty($item->cover)) {
+                            $coverUrl = asset('storage/' . $item->cover);
+                        } else {
+                            $coverUrl = asset('images/default.jpg');
+                        }
+                    @endphp
+                    <img src="{{ $coverUrl }}" alt="{{ $item->judul }}">
+                    <div class="card-body">
+                        <h4>{{ $item->judul }}</h4>
+                        <small>{{ $item->pengarang ?? '-' }}</small>
+                        <small>{{ $item->tahun_terbit ?? '-' }}</small>
+                        <span class="badge">Stock: {{ $item->stock ?? 0 }}</span>
+                    </div>
+                </div>
+            @empty
+                <p>Tidak ada buku terbaru.</p>
+            @endforelse
+        </div>
+    </section>
 
+    <footer class="footer">
+        <p>© 2025 LibrAspire. All rights reserved.</p>
+        <p>Email | Twitter | Facebook | Instagram</p>
+        <p>Jl Raya ITS, Surabaya, Indonesia</p>
+    </footer>
 </body>
 </html>

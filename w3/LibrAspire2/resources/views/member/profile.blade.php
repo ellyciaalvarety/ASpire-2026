@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Member Profile - LibrAspire</title>
+    <style>
+        body { margin: 0; font-family: Arial, sans-serif; background: #f5f6f8; background-image: radial-gradient(#d1d1d1 0.5px, transparent 0.5px); background-size: 20px 20px; }
+        .navbar { display: flex; justify-content: space-between; padding: 20px 50px; align-items: center; }
+        .logo { font-weight: bold; font-size: 22px; color: #1b2a4e; }
+        .nav-links a { margin-left: 30px; text-decoration: none; color: #666; }
+        .nav-links a.active { color: #1b2a4e; font-weight: bold; }
+
+        .container { display: flex; justify-content: center; align-items: center; min-height: 70vh; }
+        .profile-card {
+            background: #1b2a4e;
+            width: 850px;
+            border-radius: 30px;
+            padding: 50px;
+            display: flex;
+            align-items: center;
+            color: white;
+            position: relative;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.18);
+        }
+        .profile-img { width: 200px; height: 200px; border-radius: 50%; object-fit: cover; margin-right: 60px; border: 3px solid rgba(255,255,255,0.3); }
+        .profile-info { flex: 1; }
+        .info-row { display: flex; justify-content: space-between; margin-bottom: 25px; font-size: 20px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; }
+        .info-label { font-weight: bold; }
+        .logout-btn { color: #ff4d4d; text-decoration: none; font-weight: bold; font-size: 18px; display: inline-block; margin-top: 10px; }
+        .btn-edit { position: absolute; bottom: 40px; right: 50px; background: white; color: #1b2a4e; padding: 12px 50px; border-radius: 25px; text-decoration: none; font-weight: bold; transition: 0.3s; }
+        .btn-edit:hover { background: #e0e0e0; }
+
+        @media(max-width: 900px) {
+            .profile-card { width: 100%; border-radius: 24px; padding: 30px; flex-direction: column; align-items: stretch; }
+            .profile-img { margin: 0 auto 30px; }
+            .btn-edit { position: static; width: 100%; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">LibrAspire</div>
+        <div class="nav-links">
+            <a href="{{ route('member.home') }}">Home</a>
+            <a href="{{ route('member.contact') }}">Contact</a>
+            <a href="{{ route('member.profile') }}" class="active">Profile</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="profile-card">
+            <img class="profile-img" src="{{ Auth::user()->foto_url }}">
+            <div class="profile-info">
+                <div class="info-row">
+                    <span class="info-label">Name</span>
+                    <span>{{ Auth::user()->name }}</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Email</span>
+                    <span>{{ Auth::user()->email }}</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Password</span>
+                    <span>*******</span>
+                </div>
+                <a href="{{ route('logout') }}" class="logout-btn">Log Out</a>
+            </div>
+            <a href="{{ route('member.editprofile') }}" class="btn-edit">Edit</a>
+        </div>
+    </div>
+</body>
+</html>
