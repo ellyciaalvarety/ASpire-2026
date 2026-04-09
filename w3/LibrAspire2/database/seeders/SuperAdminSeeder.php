@@ -15,7 +15,7 @@ class SuperAdminSeeder extends Seeder
             'email' => 'superadmin@gmail.com',
             'password' => Hash::make('123456'),
             'role' => 'superadmin',
-            'foto' => 'default.jpg',
+            'foto' => null,
             'created_at' => now(),
             'updated_at' => now(),
         ]);
@@ -24,7 +24,7 @@ class SuperAdminSeeder extends Seeder
             'email' => 'admin@gmail.com',
             'password' => Hash::make('123456'),
             'role' => 'admin',
-            'foto' => 'default.jpg',
+            'foto' => null,
             'created_at' => now(),
             'updated_at' => now(),
         ]);
@@ -33,7 +33,7 @@ class SuperAdminSeeder extends Seeder
             'email' => 'member@gmail.com',
             'password' => Hash::make('123456'),
             'role' => 'member',
-            'foto' => 'default.jpg',
+            'foto' => null,
             'created_at' => now(),
             'updated_at' => now(),
         ]);

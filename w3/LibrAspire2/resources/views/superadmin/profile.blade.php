@@ -37,8 +37,9 @@
 
     <div class="container">
         <div class="profile-card">
-            <img src="{{ Auth::user()->foto ? asset('storage/'.Auth::user()->foto) : asset('images/default.jpg') }}" class="profile-img">
-            
+<img class="profile-img" src="{{ Auth::user()->foto 
+    ? asset('storage/'.Auth::user()->foto) 
+    : asset('images/default.jpg') }}">            
             <div class="profile-info">
                 <div class="info-row">
                     <span class="info-label">Name</span>
