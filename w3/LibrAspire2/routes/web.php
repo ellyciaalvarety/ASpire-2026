@@ -81,8 +81,8 @@ Route::middleware('auth')->group(function () {
 
         // Peminjaman Admin
         Route::get('/peminjaman', [PeminjamanController::class, 'index'])->name('admin.peminjaman.index');
-        Route::put('/admin/peminjaman/{id}/status', [PeminjamanController::class, 'updateStatus'])
-    ->name('admin.peminjaman.updateStatus');
+        Route::put('/peminjaman/{id}/status', [PeminjamanController::class, 'updateStatus'])
+            ->name('admin.peminjaman.updateStatus');
 
         Route::get('/profile', function () {
             return view('admin.profile');
