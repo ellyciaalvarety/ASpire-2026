@@ -141,7 +141,7 @@ Route::middleware('auth')->group(function () {
             $bukuPopular = $controller->popular();
 
             return view('superadmin.home', compact('latestBooks', 'bukuPopular'));
-        });
+        })->name('superadmin.home');
 
         // MANAGE USER
         Route::get('/user', [UserController::class, 'index'])->name('superadmin.user.index');
