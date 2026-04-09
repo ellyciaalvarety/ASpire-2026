@@ -120,10 +120,7 @@
     @forelse ($bukuPopular ?? [] as $buku)
         <div class="card">
             @php
-                // PRIORITAS:
-                // 1. cover_url (dari API / luar)
-                // 2. storage (upload lokal)
-                // 3. default image
+           
 
                 if (!empty($buku->cover_url)) {
                     $coverUrl = $buku->cover_url;

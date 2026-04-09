@@ -42,7 +42,7 @@
             margin-top: 30px;
         }
 
-        /* BOOK GRID */
+       /* BOOK GRID */
         .books {
             display: flex;
             gap: 20px;
@@ -57,6 +57,15 @@
             padding: 10px;
             width: 150px;
             text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .card:hover {
+            transform: scale(1.1);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            z-index: 10;
         }
 
         .card img {
@@ -64,8 +73,15 @@
             border-radius: 8px;
         }
 
+        /* Gabungan style */
         .card h4 {
             margin: 10px 0 5px;
+            color: #1b2a4e;
+        }
+
+        .card small {
+            display: block;
+            margin: 3px 0;
         }
 
         .btn {
@@ -74,8 +90,8 @@
             padding: 5px 10px;
             border-radius: 10px;
             font-size: 12px;
-            display: inline-block;
             margin-top: 5px;
+            display: inline-block;
         }
 
         /* CATEGORY */
@@ -140,20 +156,28 @@
 <h2>Popular Now 🔥</h2>
 <div class="books">
     @forelse ($bukuPopular ?? [] as $buku)
-        <div class="card">
+        <a class="card" href="{{ route('admin.buku.detail', $buku->id) }}">
             @php
-                $coverUrl = $buku->cover_url ?? asset('images/default.jpg');
+           
+
+                if (!empty($buku->cover_url)) {
+                    $coverUrl = $buku->cover_url;
+                } elseif (!empty($buku->cover)) {
+                    $coverUrl = asset('storage/' . $buku->cover);
+                } else {
+                    $coverUrl = asset('images/default.jpg');
+                }
             @endphp
 
             <img src="{{ $coverUrl }}" alt="{{ $buku->judul }}">
             <h4>{{ $buku->judul }}</h4>
-            <small>{{ $buku->pengarang ?? '-' }}</small><br>
-            <small>{{ $buku->tahun_terbit ?? '-' }}</small><br>
+            <small>{{ $buku->pengarang ?? '-' }}</small>
+            <small>{{ $buku->tahun_terbit ?? '-' }}</small>
 
             <span class="btn">
                 {{ $buku->total_pinjam ?? 0 }}x dipinjam
             </span>
-        </div>
+        </a>
     @empty
         <p>Tidak ada buku populer minggu ini.</p>
     @endforelse
@@ -162,21 +186,21 @@
 <h2>Our Latest Collection 📚</h2>
 <div class="books">
     @forelse ($latestBooks ?? [] as $item)
-    <div class="card">
-        @php
-            $coverUrl = $item->cover_url ?? asset('images/default.jpg');
-        @endphp
+        <a class="card" href="{{ route('admin.buku.detail', $item->id) }}">
+            @php
+                $coverUrl = $item->cover_url ?? asset('images/default.jpg');
+            @endphp
 
-        <img src="{{ $coverUrl }}" alt="{{ $item->judul }}">
-        <h4>{{ $item->judul }}</h4>
-        <small>{{ $item->pengarang ?? '-' }}</small><br>
-        <small>{{ $item->tahun_terbit ?? '-' }}</small><br>
+            <img src="{{ $coverUrl }}" alt="{{ $item->judul }}">
+            <h4>{{ $item->judul }}</h4>
+            <small>{{ $item->pengarang ?? '-' }}</small>
+            <small>{{ $item->tahun_terbit ?? '-' }}</small>
 
-        <span class="btn">Stock: {{ $item->stock ?? 0 }}</span>
-    </div>
-@empty
-    <p>Tidak ada buku terbaru.</p>
-@endforelse
+            <span class="btn">Stock: {{ $item->stock ?? 0 }}</span>
+        </a>
+    @empty
+        <p>Tidak ada buku terbaru.</p>
+    @endforelse
 </div>
 
 <a href="{{ route('admin.buku.create') }}" class="floating-add" title="Add New Book">+</a>

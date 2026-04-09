@@ -91,6 +91,11 @@ Route::middleware('auth')->group(function () {
         Route::get('/profile/edit', function () {
             return view('admin.editprofile', ['user' => Auth::user()]);
         })->name('admin.editprofile');
+
+        Route::get('/buku/{id}', function ($id) {
+            $buku = \App\Models\Buku::with('kategori')->findOrFail($id);
+            return view('admin.buku.detail', compact('buku'));
+        })->name('admin.buku.detail');
     });
 
 
@@ -131,6 +136,8 @@ Route::middleware('auth')->group(function () {
         })->name('member.editprofile');
 
         
+
+        
     });
 
 
@@ -158,12 +165,6 @@ Route::middleware('auth')->group(function () {
 
         // delete user
         Route::delete('/user/{id}', [UserController::class, 'destroy'])->name('superadmin.user.destroy');
-
-        // Detail buku untuk superadmin
-        Route::get('/buku/{id}', function ($id) {
-            $buku = \App\Models\Buku::with('kategori')->findOrFail($id);
-            return view('superadmin.buku.detail', compact('buku'));
-        })->name('superadmin.buku.detail');
 
         Route::get('/profile', function () {
             return view('superadmin.profile');
