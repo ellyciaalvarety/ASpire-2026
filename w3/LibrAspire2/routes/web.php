@@ -129,6 +129,8 @@ Route::middleware('auth')->group(function () {
         Route::get('/profile/edit', function () {
             return view('member.editprofile', ['user' => Auth::user()]);
         })->name('member.editprofile');
+
+        
     });
 
 

@@ -176,7 +176,7 @@
                 </div>
 
                 <div class="button-group">
-                    <a href="{{ route('profile') }}" class="btn btn-cancel">Cancel</a>
+                    <a href="{{ route('admin.profile') }}" class="btn btn-cancel">Cancel</a>
                     <button type="submit" class="btn btn-save">Save</button>
                 </div>
             </form>
