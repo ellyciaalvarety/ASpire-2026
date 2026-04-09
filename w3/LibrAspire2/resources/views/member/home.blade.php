@@ -10,7 +10,6 @@
             background: #f5f6f8;
         }
 
-        /* NAVBAR */
         .navbar {
             display: flex;
             justify-content: space-between;
@@ -42,7 +41,6 @@
             margin-top: 30px;
         }
 
-        /* BOOK GRID */
         .books {
             display: flex;
             gap: 20px;
@@ -78,7 +76,6 @@
             margin-top: 5px;
         }
 
-        /* CATEGORY */
         .categories {
             display: flex;
             gap: 20px;
@@ -95,7 +92,6 @@
             text-align: center;
         }
 
-        /* FOOTER */
         .footer {
             background: #1b2a4e;
             color: white;
@@ -107,7 +103,6 @@
 </head>
 <body>
 
-<!-- NAVBAR -->
 <div class="navbar">
     <div class="logo">LibrAspire</div>
 
@@ -125,10 +120,17 @@
     @forelse ($bukuPopular ?? [] as $buku)
         <div class="card">
             @php
-                $coverUrl = asset('images/default.jpg'); // default
+                // PRIORITAS:
+                // 1. cover_url (dari API / luar)
+                // 2. storage (upload lokal)
+                // 3. default image
 
-                if($buku->cover) {
-                    $coverUrl = asset('storage/' . $buku->cover); // covers/... termasuk upload & seeder
+                if (!empty($buku->cover_url)) {
+                    $coverUrl = $buku->cover_url;
+                } elseif (!empty($buku->cover)) {
+                    $coverUrl = asset('storage/' . $buku->cover);
+                } else {
+                    $coverUrl = asset('images/default.jpg');
                 }
             @endphp
 
@@ -149,28 +151,29 @@
 <h2>Our Latest Collection 📚</h2>
 <div class="books">
     @forelse ($latestBooks ?? [] as $item)
-    <div class="card">
-        @php
-            $coverUrl = asset('images/default.jpg'); 
-            if($item->cover) {
-                $coverUrl = asset('storage/' . $item->cover); 
-            }
-        @endphp
+        <div class="card">
+            @php
+                if (!empty($item->cover_url)) {
+                    $coverUrl = $item->cover_url;
+                } elseif (!empty($item->cover)) {
+                    $coverUrl = asset('storage/' . $item->cover);
+                } else {
+                    $coverUrl = asset('images/default.jpg');
+                }
+            @endphp
 
-        <img src="{{ $coverUrl }}" alt="{{ $item->judul }}">
-        <h4>{{ $item->judul }}</h4>
-        <small>{{ $item->pengarang ?? '-' }}</small><br>
-        <small>{{ $item->tahun_terbit ?? '-' }}</small><br>
+            <img src="{{ $coverUrl }}" alt="{{ $item->judul }}">
+            <h4>{{ $item->judul }}</h4>
+            <small>{{ $item->pengarang ?? '-' }}</small><br>
+            <small>{{ $item->tahun_terbit ?? '-' }}</small><br>
 
-        <span class="btn">Stock: {{ $item->stock ?? 0 }}</span>
-    </div>
-@empty
-    <p>Tidak ada buku terbaru.</p>
-@endforelse
+            <span class="btn">Stock: {{ $item->stock ?? 0 }}</span>
+        </div>
+    @empty
+        <p>Tidak ada buku terbaru.</p>
+    @endforelse
 </div>
 
-
-<!-- FOOTER -->
 <div class="footer">
     <p>© 2025 LibrAspire. All rights reserved.</p>
     <p>Email | Twitter | Facebook | Instagram</p>

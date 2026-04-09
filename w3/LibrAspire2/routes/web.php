@@ -159,6 +159,12 @@ Route::middleware('auth')->group(function () {
         // delete user
         Route::delete('/user/{id}', [UserController::class, 'destroy'])->name('superadmin.user.destroy');
 
+        // Detail buku untuk superadmin
+        Route::get('/buku/{id}', function ($id) {
+            $buku = \App\Models\Buku::with('kategori')->findOrFail($id);
+            return view('superadmin.buku.detail', compact('buku'));
+        })->name('superadmin.buku.detail');
+
         Route::get('/profile', function () {
             return view('superadmin.profile');
         })->name('superadmin.profile');
