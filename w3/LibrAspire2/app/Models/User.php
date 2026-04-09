@@ -15,6 +15,21 @@ class User extends Authenticatable
         'role'
     ];
 
+    public function getFotoUrlAttribute()
+    {
+        if ($this->foto) {
+            if (file_exists(public_path($this->foto))) {
+                return asset($this->foto);
+            }
+
+            if (file_exists(public_path('storage/' . $this->foto))) {
+                return asset('storage/' . $this->foto);
+            }
+        }
+
+        return asset('images/default.jpg');
+    }
+
     public function peminjaman()
     {
         return $this->hasMany(Peminjaman::class);

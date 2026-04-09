@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -54,8 +53,15 @@ class UserController extends Controller
         }
 
         // 🔥 Hapus foto pakai Storage
-        if ($user->foto && Storage::disk('public')->exists($user->foto)) {
-            Storage::disk('public')->delete($user->foto);
+        if ($user->foto) {
+            $localFoto = public_path($user->foto);
+            $storageFoto = public_path('storage/' . $user->foto);
+
+            if (file_exists($localFoto)) {
+                unlink($localFoto);
+            } elseif (file_exists($storageFoto)) {
+                unlink($storageFoto);
+            }
         }
 
         $user->delete();
@@ -120,12 +126,28 @@ class UserController extends Controller
         $user->email = $request->email;
 
         if ($request->hasFile('foto')) {
+            $foto = $request->file('foto');
+            $destinationPath = 'images/profile';
 
-            if ($user->foto && Storage::disk('public')->exists($user->foto)) {
-                Storage::disk('public')->delete($user->foto);
+            if (!file_exists(public_path($destinationPath))) {
+                mkdir(public_path($destinationPath), 0755, true);
             }
 
-            $user->foto = $request->file('foto')->store('profile', 'public');
+            if ($user->foto) {
+                $localFoto = public_path($user->foto);
+                $storageFoto = public_path('storage/' . $user->foto);
+
+                if (file_exists($localFoto)) {
+                    unlink($localFoto);
+                } elseif (file_exists($storageFoto)) {
+                    unlink($storageFoto);
+                }
+            }
+
+            $filename = time() . '_' . preg_replace('/[^A-Za-z0-9\-_\.]/', '_', $foto->getClientOriginalName());
+            $foto->move(public_path($destinationPath), $filename);
+
+            $user->foto = $destinationPath . '/' . $filename;
         }
 
         $user->save();

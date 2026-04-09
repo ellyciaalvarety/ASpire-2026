@@ -164,7 +164,7 @@
                 <label>Photo</label>
                 <input type="file" name="foto" onchange="previewImage(event)">
                 @if($user->foto)
-                    <img id="preview" src="{{ asset('storage/'.$user->foto) }}" class="preview-img">
+                    <img id="preview" src="{{ $user->foto_url }}" class="preview-img">
                 @else
                     <img id="preview" class="preview-img" style="display:none;">
                 @endif
