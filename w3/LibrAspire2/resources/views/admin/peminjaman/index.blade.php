@@ -205,17 +205,17 @@
                     <td>{{ $item->buku->judul }}</td>
                     <td>
                         <button class="btn-edit"
-    onclick="openModal(
-        '{{ $item->id }}',
-        '{{ $item->user->name }}',
-        '{{ $item->buku->judul }}',
-        '{{ $item->buku->isbn ?? '-' }}',
-        '{{ $item->tanggal_pinjam }}',
-        '{{ $item->tanggal_kembali ?? '-' }}',
-        '{{ $item->status }}'
-    )">
-    Edit
-</button>
+                            onclick="openModal(
+                                '{{ $item->id }}',
+                                '{{ $item->user->name }}',
+                                '{{ $item->buku->judul }}',
+                                '{{ $item->buku->isbn ?? '-' }}',
+                                '{{ $item->tanggal_pinjam }}',
+                                '{{ $item->tanggal_kembali ?? '-' }}',
+                                '{{ $item->status }}'
+                            )">
+                            Edit
+                        </button>
 
                         @php
                             $statusClass = $item->status;
