@@ -187,7 +187,17 @@
                     </div>
                 </div>
                 <div class="button-group">
-                    <a href="{{ url()->previous() }}" class="button-back"><i class="fas fa-arrow-left"></i> Back</a>
+                    <a href="{{ url()->previous() }}" class="button-back">
+                        <i class="fas fa-arrow-left"></i> Back
+                    </a>
+
+                
+                        <form action="{{ route('member.pinjam', $buku->id) }}" method="POST">
+                            @csrf
+                            <button type="submit" class="button-back" style="background:#0f3f74; color:white; border:none;">
+                                <i class="fas fa-book"></i> Request
+                            </button>
+                        </form>
                 </div>
             </div>
         </section>

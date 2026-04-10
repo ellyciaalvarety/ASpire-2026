@@ -142,7 +142,7 @@ return view('admin.home', compact('latestBooks', 'bukuPopular'));
     // Latest Collection
     public function latest()
 {
-    return Buku::latest()->take(20)->get();
+    return Buku::latest()->get();
 }
 
     //popular

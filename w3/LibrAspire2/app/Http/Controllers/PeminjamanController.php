@@ -19,13 +19,15 @@ class PeminjamanController extends Controller
             'status' => 'waiting'
         ]);
 
-        return back()->with('success', 'Berhasil mengajukan peminjaman');
+        return redirect()->route('member.home')->with('success', 'Berhasil mengajukan peminjaman');
     }
 
     // Admin lihat semua peminjaman
     public function index()
     {
-        $data = Peminjaman::with('user','buku')->get();
+        $data = Peminjaman::with('user','buku')
+        ->latest()
+        ->get();
         return view('admin.peminjaman.index', compact('data'));
     }
 
