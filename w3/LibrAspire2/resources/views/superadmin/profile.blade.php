@@ -9,7 +9,19 @@
         .logo { font-weight: bold; font-size: 22px; color: #1b2a4e; text-decoration: none; }
         .nav-links a { margin-left: 30px; text-decoration: none; color: #666; }
         .nav-links a.active { color: #1b2a4e; font-weight: bold; }
+            .footer {
+                        background: #0f234d;
+                        color: #ffffff;
+                        text-align: center;
+                        padding: 34px 24px;
+                        margin-top: 20px;
+                    }
 
+                    .footer p {
+                        margin: 8px 0;
+                        color: rgba(255,255,255,0.8);
+                        font-size: 14px;
+                    }
         .container { display: flex; justify-content: center; align-items: center; min-height: 70vh; }
         .profile-card {
             background: #1b2a4e; width: 850px; border-radius: 30px; padding: 50px;
@@ -57,5 +69,10 @@
             <a href="{{ route('superadmin.editprofile') }}" class="btn-edit">Edit</a>
         </div>
     </div>
+    <footer class="footer">
+        <p>© 2025 LibrAspire. All rights reserved.</p>
+        <p>Email | Twitter | Facebook | Instagram</p>
+        <p>Jl Raya ITS, Surabaya, Indonesia</p>
+    </footer>
 </body>
 </html>

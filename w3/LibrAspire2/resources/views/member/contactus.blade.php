@@ -148,17 +148,17 @@ body {
 <!-- NAVBAR -->
 <div class="navbar">
     <a href="#" class="logo">LibrAspire</a>
-    <div class="nav-links">
-        <a href="#">Home</a>
-        <a href="#" class="active">Contact</a>
-        <a href="#">Profile</a>
-    </div>
+        <div class="nav-links">
+            <a href="{{ route('member.home') }}">Home</a>
+            <a href="{{ route('member.contact') }}">Contact</a>
+            <a href="{{ route('member.profile') }}">Profile</a>
+        </div>
 </div>
 
 <!-- CONTACT -->
 <section class="contact-section">
     <div class="contact-bg">
-        <img src="https://github.com/ellyciaalvarety/ASpire-2026/raw/main/images/imgforcontactus.png" alt="bg">
+        <img src="https://github.com/ellyciaalvarety/ASpire-2026/raw/main/images/imgforcontactus.png">
     </div>
 
     <div class="contact-card">

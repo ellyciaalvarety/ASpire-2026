@@ -170,6 +170,19 @@
                 width: 90%;
             }
         }
+        .footer {
+            background: #0f234d;
+            color: #ffffff;
+            text-align: center;
+            padding: 34px 24px;
+            margin-top: 20px;
+        }
+
+        .footer p {
+            margin: 8px 0;
+            color: rgba(255,255,255,0.8);
+            font-size: 14px;
+        }
     </style>
 </head>
 
@@ -274,7 +287,11 @@
             </table>
         </div>
     </div>
-
+<footer class="footer">
+        <p>© 2025 LibrAspire. All rights reserved.</p>
+        <p>Email | Twitter | Facebook | Instagram</p>
+        <p>Jl Raya ITS, Surabaya, Indonesia</p>
+    </footer>
 </div>
 
 </body>

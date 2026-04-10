@@ -5,6 +5,9 @@
     <title>LibrAspire</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- FONT -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Segoe+UI&display=swap" rel="stylesheet">
+
     <style>
         * {
             margin: 0;
@@ -19,43 +22,56 @@
 
         /* NAVBAR */
         .navbar {
-            padding: 20px 60px;
+            padding: 20px 50px;
+            font-size: 22px;
             font-weight: bold;
-            font-size: 20px;
             color: #1e3a8a;
         }
 
         /* HERO */
         .hero {
+            margin-top: 0px;
+            min-height: 90vh;
             display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 50px 60px;
+            justify-content: center;   /* tengah horizontal */
+            align-items: center;       /* tengah vertikal */
+            text-align: center;
+            padding: 40px;
         }
 
+        /* TEXT */
         .hero-text {
-            max-width: 500px;
+            max-width: 520px;
+            z-index: 2;
         }
 
         .hero-text h1 {
-            font-size: 48px;
+            font-family: 'Playfair Display', serif;
+            font-size: 56px;
+            line-height: 1.2;
             color: #1e3a8a;
             margin-bottom: 20px;
         }
 
         .hero-text p {
             font-size: 18px;
-            color: #555;
-            margin-bottom: 25px;
+            color: #3b4a6b;
+            margin-bottom: 30px;
+        }
+
+        /* BUTTON */
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
         }
 
         .btn {
-            padding: 12px 25px;
-            border-radius: 30px;
-            border: none;
+            padding: 14px 40px;
+            border-radius: 999px; /* pill */
+            font-size: 15px;
             cursor: pointer;
-            margin-right: 10px;
-            font-size: 16px;
+            border: none;
+            transition: 0.3s;
         }
 
         .btn-primary {
@@ -64,45 +80,92 @@
         }
 
         .btn-outline {
-            border: 2px solid #1e3a8a;
+            border: 1.5px solid #1e3a8a;
             background: transparent;
             color: #1e3a8a;
         }
 
-        .hero-img img {
-            width: 350px;
-            border-radius: 20px;
+        .btn-primary:hover {
+            background: #162d6b;
         }
 
-        /* SECTION */
-        .section {
-            display: flex;
-            margin-top: 50px;
+        .btn-outline:hover {
+            background: #1e3a8a;
+            color: white;
         }
 
-        .section img {
-            width: 50%;
+        /* IMAGE RIGHT */
+        .hero-img {
+            position: absolute;
+            right: 20;
+            top: 0;
+            width: 55%; /* dari 45% → lebih besar */
+            height: 100%;
+            overflow: hidden;
+        }
+
+
+
+        /* HOW IT WORKS */
+        .how-it-works {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 380px;
+        }
+
+        .how-img img {
+            width: 100%;
+            height: 100%;
             object-fit: cover;
         }
 
-        .how {
-            width: 50%;
-            background: #0f2a5c;
+        .how-content {
+            background: #0d2243;
             color: white;
-            padding: 50px;
+            padding: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
-        .how h2 {
+        .how-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 34px;
             margin-bottom: 30px;
         }
 
-        .step {
-            margin-bottom: 20px;
+        .steps {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
         }
 
-        .step span {
+        .step {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+        }
+
+        .step-num {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
             font-weight: bold;
-            margin-right: 10px;
+        }
+
+        .step-text strong {
+            display: block;
+            font-size: 15px;
+        }
+
+        .step-text span {
+            font-size: 13px;
+            opacity: 0.8;
         }
 
         /* FOOTER */
@@ -111,27 +174,27 @@
             color: white;
             text-align: center;
             padding: 30px;
-            margin-top: 50px;
         }
 
         .footer p {
-            margin: 5px 0;
             font-size: 14px;
+            margin: 5px 0;
         }
 
+        /* RESPONSIVE */
         @media (max-width: 768px) {
             .hero {
-                flex-direction: column;
+                grid-template-columns: 1fr;
                 text-align: center;
+                padding: 40px;
             }
 
-            .section {
-                flex-direction: column;
+            .hero-img img {
+                transform: rotate(0);
             }
 
-            .section img,
-            .how {
-                width: 100%;
+            .how-it-works {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -144,54 +207,68 @@
 </div>
 
 <!-- HERO -->
-<div class="hero">
+<section class="hero">
     <div class="hero-text">
-        <h1>Find and <br> Borrow Books Easily</h1>
+        <h1>Find and <br> Borrow Books <br> Easily</h1>
         <p>Access thousands of books anytime, anywhere.</p>
 
-        <a href="/login">
-            <button class="btn btn-primary">Log In</button>
-        </a>
+        <div class="hero-buttons">
+            <a href="/login">
+                <button class="btn btn-primary">Log In</button>
+            </a>
 
-        <a href="/register">
-            <button class="btn btn-outline">Register</button>
-        </a>
+            <a href="/register">
+                <button class="btn btn-outline">Register</button>
+            </a>
+        </div>
     </div>
 
-    <div class="hero-img">
-        <!-- GANTI DENGAN GAMBAR KAMU -->
-        <img src="{{ asset('images/hero.jpg') }}" alt="Books">
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-it-works">
+    <div class="how-img">
+        <img src="https://github.com/ellyciaalvarety/ASpire-2026/raw/main/images/imgforhowitworks.png">
     </div>
-</div>
 
-<!-- SECTION -->
-<div class="section">
-    <img src="{{ asset('images/library.jpg') }}" alt="Library">
-
-    <div class="how">
+    <div class="how-content">
         <h2>How It Works</h2>
 
-        <div class="step">
-            <span>1.</span> Register <br>
-            <small>Create your account for free.</small>
-        </div>
+        <div class="steps">
+            <div class="step">
+                <div class="step-num">1</div>
+                <div class="step-text">
+                    <strong>Register</strong>
+                    <span>Create your account for free.</span>
+                </div>
+            </div>
 
-        <div class="step">
-            <span>2.</span> Search Books <br>
-            <small>Find the books you're looking for.</small>
-        </div>
+            <div class="step">
+                <div class="step-num">2</div>
+                <div class="step-text">
+                    <strong>Search Books</strong>
+                    <span>Find the books you're looking for.</span>
+                </div>
+            </div>
 
-        <div class="step">
-            <span>3.</span> Request a Loan <br>
-            <small>Submit a borrowing request.</small>
-        </div>
+            <div class="step">
+                <div class="step-num">3</div>
+                <div class="step-text">
+                    <strong>Request a Loan</strong>
+                    <span>Submit a borrowing request.</span>
+                </div>
+            </div>
 
-        <div class="step">
-            <span>4.</span> Pick Up Your Book <br>
-            <small>Collect your book at the library.</small>
+            <div class="step">
+                <div class="step-num">4</div>
+                <div class="step-text">
+                    <strong>Pick Up Your Book</strong>
+                    <span>Collect your book at the library.</span>
+                </div>
+            </div>
         </div>
     </div>
-</div>
+</section>
 
 <!-- FOOTER -->
 <div class="footer">

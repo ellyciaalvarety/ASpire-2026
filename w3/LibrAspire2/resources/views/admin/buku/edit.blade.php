@@ -270,10 +270,7 @@
         </div>
     </div>
 
-    <div class="footer">
-        <p>© 2025 LibrAspire. All rights reserved.</p>
-    </div>
-</div>
+
 
 </body>
 </html>

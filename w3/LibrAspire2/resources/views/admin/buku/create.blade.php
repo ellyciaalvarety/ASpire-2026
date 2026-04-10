@@ -329,11 +329,7 @@
             </div>
         </div>
 
-        <div class="footer">
-            <p>© 2025 LibrAspire. All rights reserved.</p>
-            <p>Email  |  Twitter  |  Facebook  |  instagram</p>
-            <p>Jl Raya ITS, Surabaya, Indonesia</p>
-        </div>
+
     </div>
 </body>
 </html>
