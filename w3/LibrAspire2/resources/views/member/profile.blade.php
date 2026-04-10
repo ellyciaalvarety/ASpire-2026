@@ -44,11 +44,15 @@
             flex-direction: column;
             align-items: center;
             padding: 40px 0;
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
         }
 
         .profile-card {
             background: #1b2a4e;
-            width: 850px;
+            width: 100%;
+            max-width: 850px;
             border-radius: 30px;
             padding: 50px;
             display: flex;
@@ -105,7 +109,8 @@
 
         /* HISTORY */
         .history-box {
-            width: 950px;
+            width: 100%;
+            max-width: 950px;
             margin-top: 30px;
         }
 
@@ -176,6 +181,7 @@
             text-align: center;
             padding: 34px 24px;
             margin-top: 20px;
+            width: 100%;
         }
 
         .footer p {
@@ -287,12 +293,12 @@
             </table>
         </div>
     </div>
+</div>
 <footer class="footer">
         <p>© 2025 LibrAspire. All rights reserved.</p>
         <p>Email | Twitter | Facebook | Instagram</p>
         <p>Jl Raya ITS, Surabaya, Indonesia</p>
     </footer>
-</div>
 
 </body>
 </html>
