@@ -132,11 +132,11 @@ body {
             color: #ffffff;
             text-align: center;
             padding: 34px 24px;
-            margin-top: 20px;
+            margin-top: 0px;
         }
 
         .footer p {
-            margin: 8px 0;
+            margin: 0px 0;
             color: rgba(255,255,255,0.8);
             font-size: 14px;
         }
