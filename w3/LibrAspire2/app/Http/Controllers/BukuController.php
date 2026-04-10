@@ -7,22 +7,22 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Buku;
 use App\Models\Kategori;
+
 class BukuController extends Controller
 {
-    //Tampilkan buku
+    // Tampilkan buku
     public function index()
     {
         $buku = Buku::with('kategori')->get();
-       $latestBooks = $this->latest();
-$bukuPopular = $this->popular();
+        $latestBooks = $this->latest();
+        $bukuPopular = $this->popular();
 
-return view('admin.home', compact('latestBooks', 'bukuPopular'));
+        return view('admin.home', compact('latestBooks', 'bukuPopular'));
     }
 
     // Form tambah buku
     public function create()
     {
-        
         $kategori = Kategori::all();
         return view('admin.buku.create', compact('kategori'));
     }
@@ -38,21 +38,20 @@ return view('admin.home', compact('latestBooks', 'bukuPopular'));
             'tahun_terbit' => 'required|numeric',
             'kategori_id' => 'required',
             'stock' => 'nullable|integer|min:0',
-           'cover' => 'nullable|file|mimes:jpg,jpeg,png|max:2048'  
-                 ]);
+            'cover' => 'nullable|file|mimes:jpg,jpeg,png|max:2048'
+        ]);
 
         $coverPath = null;
 
         if ($request->hasFile('cover')) {
-        $file = $request->file('cover');
+            $file = $request->file('cover');
 
-        // optional cek manual
-        if (!in_array($file->extension(), ['jpg', 'jpeg', 'png'])) {
-            return back()->withErrors(['cover' => 'Format harus JPG/PNG']);
+            if (!in_array($file->extension(), ['jpg', 'jpeg', 'png'])) {
+                return back()->withErrors(['cover' => 'Format harus JPG/PNG']);
+            }
+
+            $coverPath = $file->store('covers', 'public');
         }
-
-        $coverPath = $file->store('covers', 'public');
-    }
 
         Buku::create([
             'judul' => $request->judul,
@@ -66,14 +65,15 @@ return view('admin.home', compact('latestBooks', 'bukuPopular'));
             'stock' => $request->stock ?? 0
         ]);
 
-        return redirect()->route('admin.home')->with('success', 'Buku berhasil ditambahkan');
+        return redirect()->route('admin.buku.index')
+            ->with('success', 'Buku berhasil ditambahkan');
     }
 
     // Detail buku
     public function show($id)
     {
         $buku = Buku::with('kategori')->findOrFail($id);
-        return view('buku.show', compact('buku'));
+        return view('admin.buku.detail', compact('buku'));
     }
 
     // Form edit
@@ -102,7 +102,6 @@ return view('admin.home', compact('latestBooks', 'bukuPopular'));
         ]);
 
         if ($request->hasFile('cover')) {
-            // hapus cover lama
             if ($buku->cover && file_exists(public_path('storage/' . $buku->cover))) {
                 unlink(public_path('storage/' . $buku->cover));
             }
@@ -123,7 +122,7 @@ return view('admin.home', compact('latestBooks', 'bukuPopular'));
         ]);
 
         return redirect()->route('admin.buku.detail', $buku->id)
-    ->with('success', 'Buku berhasil diupdate');
+            ->with('success', 'Buku berhasil diupdate');
     }
 
     // Hapus buku
@@ -137,26 +136,28 @@ return view('admin.home', compact('latestBooks', 'bukuPopular'));
 
         $buku->delete();
 
-        return redirect()->route('buku.index')->with('success', 'Buku berhasil dihapus');
+        return redirect()->route('admin.buku.index')
+            ->with('success', 'Buku berhasil dihapus');
     }
 
     // Latest Collection
     public function latest()
-{
-    return Buku::latest()->get();
-}
+    {
+        return Buku::latest()->get();
+    }
 
-    //popular
- public function popular()
-{
-    $oneWeekAgo = Carbon::now()->subDays(7);
+    // Popular
+    public function popular()
+    {
+        $oneWeekAgo = Carbon::now()->subDays(7);
 
-    return DB::table('peminjaman')
-->join('buku', 'peminjaman.buku_id', '=', 'buku.id')        ->select('buku.*', DB::raw('COUNT(peminjaman.id) as total_pinjam'))
-        ->where('peminjaman.created_at', '>=', $oneWeekAgo)
-        ->groupBy('buku.id')
-        ->orderByDesc('total_pinjam')
-        ->limit(5)
-        ->get();
-}
+        return DB::table('peminjaman')
+            ->join('buku', 'peminjaman.buku_id', '=', 'buku.id')
+            ->select('buku.*', DB::raw('COUNT(peminjaman.id) as total_pinjam'))
+            ->where('peminjaman.created_at', '>=', $oneWeekAgo)
+            ->groupBy('buku.id')
+            ->orderByDesc('total_pinjam')
+            ->limit(5)
+            ->get();
+    }
 }

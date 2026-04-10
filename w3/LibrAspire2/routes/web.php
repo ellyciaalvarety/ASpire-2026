@@ -19,7 +19,7 @@ Route::get('/', function () {
 })->name('landingpage');
 
 Route::get('/login', [AuthController::class, 'loginForm'])->name('login');
-Route::post('/login', [AuthController::class, 'login']);
+Route::post('/login', [AuthController::class, 'login'])->name('login.submit');
 
 Route::get('/register', function () {
     return view('register');

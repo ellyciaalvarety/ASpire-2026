@@ -12,8 +12,10 @@ class AuthController extends Controller
     // ======================
     // FORM LOGIN
     // ======================
-    public function loginForm()
+    public function loginForm(Request $request)
     {
+        $request->session()->regenerateToken();
+
         return view('login'); // resources/views/login.blade.php
     }
 
