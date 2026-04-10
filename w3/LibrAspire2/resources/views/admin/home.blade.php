@@ -223,6 +223,7 @@
         <input type="text" class="search" placeholder="Insert Book Title">
 
         <div class="nav-links">
+            <a href="{{ route('admin.home') }}">Home</a>
             <a href="{{ route('admin.peminjaman.index') }}">Request</a>
             <a href="{{ route('admin.profile') }}">Profile</a>
         </div>

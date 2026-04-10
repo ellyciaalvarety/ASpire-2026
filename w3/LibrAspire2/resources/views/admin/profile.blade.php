@@ -29,6 +29,7 @@
     <div class="navbar">
         <a href="{{ route('admin.home') }}" class="logo">LibrAspire</a>
         <div class="nav-links">
+            <a href="{{ route('admin.home') }}">Home</a>
             <a href="{{ route('admin.peminjaman.index') }}">Request</a>
             <a href="#" class="active">Profile</a>
         </div>

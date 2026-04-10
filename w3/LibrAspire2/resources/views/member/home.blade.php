@@ -203,6 +203,7 @@
         <input type="text" class="search" placeholder="Insert Book Title">
 
         <div class="nav-links">
+            <a href="{{ route('member.home') }}">Home</a>
             <a href="{{ route('member.contact') }}">Contact</a>
             <a href="{{ route('member.profile') }}">Profile</a>
         </div>

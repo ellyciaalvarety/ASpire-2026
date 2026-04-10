@@ -127,6 +127,7 @@
 <div class="navbar">
     <a href="{{ route('superadmin.home') }}" class="logo">LibrAspire</a>
     <div class="nav-links">
+        <a href="{{ route('superadmin.home') }}">Home</a>
         <a href="{{ route('superadmin.user.index') }}" class="active">Users</a>
         <a href="{{ route('superadmin.profile') }}">Profile</a>
     </div>

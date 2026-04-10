@@ -180,6 +180,7 @@
     <div class="navbar">
         <a href="{{ route('admin.home') }}" class="logo">LibrAspire</a>
         <div class="nav-links">
+            <a href="{{ route('admin.home') }}">Home</a>
             <a href="#" class="active">Request</a>
             <a href="{{ route('admin.profile') }}">Profile</a>
         </div>

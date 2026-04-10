@@ -204,6 +204,7 @@
         <input type="text" class="search" placeholder="Insert Book Title">
 
         <div class="nav-links">
+            <a href="{{ route('superadmin.home') }}">Home</a>
             <a href="{{ route('superadmin.user.index') }}">Users</a>
             <a href="{{ route('superadmin.profile') }}">Profile</a>
         </div>

@@ -178,6 +178,7 @@
 <div class="navbar">
     <a href="{{ route('member.home') }}" class="logo">LibrAspire</a>
     <div class="nav-links">
+        <a href="{{ route('member.home') }}">Home</a>
         <a href="{{ route('member.contact') }}">Contact</a>
         <a href="{{ route('member.profile') }}" class="active">Profile</a>
     </div>
