@@ -82,7 +82,7 @@ return view('admin.home', compact('latestBooks', 'bukuPopular'));
         $buku = Buku::findOrFail($id);
         $kategori = Kategori::all();
 
-        return view('buku.edit', compact('buku', 'kategori'));
+        return view('admin.buku.edit', compact('buku', 'kategori'));
     }
 
     // Update data buku
@@ -98,7 +98,7 @@ return view('admin.home', compact('latestBooks', 'bukuPopular'));
             'tahun_terbit' => 'required|numeric',
             'kategori_id' => 'required',
             'stock' => 'nullable|integer|min:0',
-            'cover' => 'image|mimes:jpg,jpeg,png|max:2048'
+            'cover' => 'nullable|file|mimes:jpg,jpeg,png|max:2048'
         ]);
 
         if ($request->hasFile('cover')) {
@@ -122,7 +122,8 @@ return view('admin.home', compact('latestBooks', 'bukuPopular'));
             'stock' => $request->stock ?? $buku->stock
         ]);
 
-        return redirect()->route('buku.index')->with('success', 'Buku berhasil diupdate');
+        return redirect()->route('admin.buku.detail', $buku->id)
+    ->with('success', 'Buku berhasil diupdate');
     }
 
     // Hapus buku

@@ -155,6 +155,16 @@
                 padding: 32px 28px;
             }
         }
+        .button-delete {
+            border: 1px solid #dc2626;
+            color: #dc2626;
+            background: #fff;
+        }
+
+        .button-delete:hover {
+            background: #dc2626;
+            color: #fff;
+        }
     </style>
 </head>
 <body>
@@ -187,7 +197,26 @@
                     </div>
                 </div>
                 <div class="button-group">
-                    <a href="{{ url()->previous() }}" class="button-back"><i class="fas fa-arrow-left"></i> Back</a>
+                    <a href="{{ route('admin.home') }}" class="button-back">
+                        <i class="fas fa-arrow-left"></i> Back
+                    </a>
+
+                    <!-- EDIT -->
+                    <a href="{{ route('admin.buku.edit', $buku->id) }}" class="button-back">
+                        <i class="fas fa-pen"></i> Edit
+                    </a>
+
+                    <!-- DELETE -->
+                    <form action="{{ route('admin.buku.destroy', $buku->id) }}" method="POST"
+                        onsubmit="return confirm('Yakin mau hapus buku ini?')" style="display:inline;">
+                        
+                        @csrf
+                        @method('DELETE')
+
+                        <button type="submit" class="button-back button-delete">
+                            <i class="fas fa-trash"></i> Delete
+                        </button>
+                    </form>
                 </div>
             </div>
         </section>
