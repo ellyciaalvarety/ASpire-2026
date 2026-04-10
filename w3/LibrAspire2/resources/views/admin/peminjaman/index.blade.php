@@ -257,6 +257,7 @@
                 <option value="approved">Approved</option>
                 <option value="borrowed">Borrowed</option>
                 <option value="returned">Returned</option>
+                <option value="late">Late</option>
             </select>
 
             <br><br>

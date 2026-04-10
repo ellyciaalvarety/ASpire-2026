@@ -31,17 +31,22 @@ class PeminjamanController extends Controller
 
     // Update status (admin)
     public function updateStatus(Request $request, $id)
-{
-    $pinjam = Peminjaman::findOrFail($id);
+    {
+        $request->validate([
+            'status' => 'required|in:waiting,approved,borrowed,returned,late'
+        ]);
 
-    if ($request->status == 'approved') {
-        $pinjam->tanggal_kembali = now()->addDays(7);
+        $pinjam = Peminjaman::findOrFail($id);
+
+        $status = strtolower(trim($request->status)); // 🔥 penting
+
+        if ($status == 'approved') {
+            $pinjam->tanggal_kembali = now()->addDays(7);
+        }
+
+        $pinjam->update([
+            'status' => $status
+        ]);
+        return back();
     }
-
-    $pinjam->update([
-        'status' => $request->status
-    ]);
-
-    return back();
-}
 }

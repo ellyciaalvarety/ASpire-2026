@@ -282,6 +282,12 @@
                             <label for="judul">Tittle</label>
                             <input id="judul" type="text" name="judul" value="{{ old('judul') }}" required>
                         </div>
+                        
+                        <div class="form-group">
+                            <label for="pengarang">Author</label>
+                            <input id="pengarang" type="text" name="pengarang" value="{{ old('pengarang') }}" required>
+                        </div>
+
 
                         <div class="form-group">
                             <label for="tahun_terbit">Year</label>
@@ -293,10 +299,6 @@
                             <input id="cover" type="file" name="cover" accept="image/*">
                         </div>
 
-                        <div class="form-group">
-                            <label for="pengarang">Author</label>
-                            <input id="pengarang" type="text" name="pengarang" value="{{ old('pengarang') }}" required>
-                        </div>
 
                         <div class="form-group">
                             <label for="penerbit">Publisher</label>
@@ -304,8 +306,13 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="isbn">NISBN</label>
+                            <label for="isbn">ISBN</label>
                             <input id="isbn" type="text" name="isbn" value="{{ old('isbn') }}" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="stock">Stock</label>
+                            <input id="stock" type="number" name="stock" min="0" value="{{ old('stock', 0) }}" required>
                         </div>
 
                         <div class="form-group">

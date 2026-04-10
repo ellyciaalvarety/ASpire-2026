@@ -128,9 +128,7 @@ Route::middleware('auth')->group(function () {
 
         Route::post('/pinjam/{id}', [PeminjamanController::class, 'store'])->name('member.pinjam');
         
-        Route::get('/profile', function () {
-            return view('member.profile');
-        })->name('member.profile');
+        Route::get('/profile', [UserController::class, 'profile'])->name('member.profile');
 
         Route::get('/profile/edit', function () {
             return view('member.editprofile', ['user' => Auth::user()]);

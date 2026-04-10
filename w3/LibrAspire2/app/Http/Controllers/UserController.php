@@ -79,6 +79,12 @@ class UserController extends Controller
     {
         $user = Auth::user();
 
+        $peminjaman = [];
+
+        if ($user->role == 'member') {
+            $peminjaman = $user->peminjaman()->with('buku')->latest()->get();
+        }
+
         switch ($user->role) {
             case 'superadmin':
                 $view = 'superadmin.profile';
@@ -91,8 +97,10 @@ class UserController extends Controller
                 break;
         }
 
-        return view($view, compact('user'));
+        return view($view, compact('user', 'peminjaman'));
     }
+
+   
 
     public function editProfile()
     {

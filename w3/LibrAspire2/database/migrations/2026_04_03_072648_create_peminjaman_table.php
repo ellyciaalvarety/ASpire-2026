@@ -19,7 +19,7 @@ $table->foreignId('buku_id')
       ->cascadeOnDelete();
               $table->date('tanggal_pinjam');
         $table->date('tanggal_kembali')->nullable();
-        $table->enum('status', ['waiting','approved','borrowed','returned'])->default('waiting');
+        $table->enum('status', ['waiting','approved','borrowed','returned', 'late'])->default('waiting');
         $table->timestamps();
     });
     }
