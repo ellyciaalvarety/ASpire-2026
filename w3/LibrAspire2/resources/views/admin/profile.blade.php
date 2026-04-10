@@ -4,6 +4,19 @@
     <meta charset="UTF-8">
     <title>My Profile - LibrAspire</title>
     <style>
+        .footer {
+            background: #0f234d;
+            color: #ffffff;
+            text-align: center;
+            padding: 34px 24px;
+            margin-top: 20px;
+        }
+
+        .footer p {
+            margin: 8px 0;
+            color: rgba(255,255,255,0.8);
+            font-size: 14px;
+        }
         body { margin: 0; font-family: Arial, sans-serif; background: #f5f6f8; background-image: radial-gradient(#d1d1d1 0.5px, transparent 0.5px); background-size: 20px 20px; }
         .navbar { display: flex; justify-content: space-between; padding: 20px 50px; align-items: center; }
         .logo { font-weight: bold; font-size: 22px; color: #1b2a4e; text-decoration: none; }
@@ -57,5 +70,10 @@
             <a href="{{ route('admin.editprofile') }}" class="btn-edit">Edit</a>
         </div>
     </div>
+    <footer class="footer">
+        <p>© 2025 LibrAspire. All rights reserved.</p>
+        <p>Email | Twitter | Facebook | Instagram</p>
+        <p>Jl Raya ITS, Surabaya, Indonesia</p>
+    </footer>
 </body>
 </html>

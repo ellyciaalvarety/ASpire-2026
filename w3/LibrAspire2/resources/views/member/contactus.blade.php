@@ -1,163 +1,180 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Contact Us - LibrAspire</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(180deg, #0b1a41 0%, #132d61 52%, #0d1a33 100%);
+<meta charset="UTF-8">
+<title>Contact Us - LibrAspire</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: #EEF2F7;
+}
+
+/* NAVBAR */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22px 50px;
+    background: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.logo {
+    font-weight: 700;
+    font-size: 22px;
+    color: #1e3a8a;
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    gap: 28px;
+}
+
+.nav-links a {
+    color: #9ca3af;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.nav-links a.active {
+    color: #1e3a8a;
+    font-weight: 700;
+}
+
+/* CONTACT SECTION */
+.contact-section {
+    position: relative;
+    min-height: calc(100vh - 80px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contact-bg {
+    position: absolute;
+    inset: 0;
+}
+
+.contact-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* CARD */
+.contact-card {
+    position: relative;
+    background: rgba(255,255,255,0.95);
+    border-radius: 20px;
+    padding: 30px;
+    width: 100%;
+    max-width: 380px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+}
+
+.contact-card h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 20px;
+    color: #0b1a41;
+}
+
+/* INPUT */
+.contact-card input,
+.contact-card textarea {
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid #d1d5db;
+    padding: 12px;
+    margin-bottom: 12px;
+    font-size: 14px;
+}
+
+.contact-card textarea {
+    height: 100px;
+}
+
+/* BUTTON */
+.send-btn {
+    width: 100%;
+    background: #1e3a8a;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 12px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.send-btn:hover {
+    background: #2563eb;
+}
+
+/* RESPONSIVE */
+@media(max-width: 720px) {
+    .navbar {
+        flex-direction: column;
+        gap: 12px;
+        padding: 18px;
+    }
+
+    .contact-card {
+        margin: 20px;
+    }
+
+}
+.footer {
+            background: #0f234d;
             color: #ffffff;
-            min-height: 100vh;
-        }
-
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 26px 50px;
-            background: rgba(255,255,255,0.05);
-            backdrop-filter: blur(10px);
-        }
-
-        .logo {
-            font-weight: 700;
-            font-size: 24px;
-            color: #ffffff;
-            text-decoration: none;
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 32px;
-        }
-
-        .nav-links a {
-            color: rgba(255,255,255,0.75);
-            text-decoration: none;
-            font-weight: 600;
-            transition: color .25s ease;
-        }
-
-        .nav-links a:hover,
-        .nav-links a.active {
-            color: #ffffff;
-        }
-
-        .content {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: calc(100vh - 104px);
-            padding: 0 24px;
-            background: #EEF2F7;
-        }
-
-        .contact-card {
-            width: min(760px, 100%);
-            background: rgba(7, 20, 54, 0.95);
-            border-radius: 32px;
-            box-shadow: 0 30px 80px rgba(0,0,0,0.35);
-            padding: 48px;
-            border: 1px solid rgba(255,255,255,0.08);
-        }
-
-        .contact-card h1 {
-            margin: 0 0 28px;
-            font-size: 32px;
-            letter-spacing: -0.03em;
             text-align: center;
-            color: #ffffff;
+            padding: 34px 24px;
+            margin-top: 20px;
         }
 
-        .field {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin-bottom: 24px;
-        }
-
-        .field label {
-            font-size: 14px;
+        .footer p {
+            margin: 8px 0;
             color: rgba(255,255,255,0.8);
-            font-weight: 600;
+            font-size: 14px;
         }
-
-        .field input,
-        .field textarea {
-            width: 100%;
-            border-radius: 18px;
-            border: 1px solid rgba(255,255,255,0.18);
-            background: rgba(255,255,255,0.06);
-            color: #ffffff;
-            padding: 18px 20px;
-            font-size: 15px;
-            outline: none;
-            resize: vertical;
-        }
-
-        .field input::placeholder,
-        .field textarea::placeholder {
-            color: rgba(255,255,255,0.55);
-        }
-
-        .field textarea {
-            min-height: 160px;
-        }
-
-        .btn-send {
-            display: block;
-            width: 160px;
-            margin: 0 auto;
-            background: #ffffff;
-            color: #0b1a41;
-            border: none;
-            border-radius: 999px;
-            padding: 16px 0;
-            font-weight: 700;
-            letter-spacing: 0.02em;
-            cursor: pointer;
-            transition: transform .2s ease, box-shadow .2s ease;
-        }
-
-        .btn-send:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 16px 30px rgba(0,0,0,0.18);
-        }
-
-        @media(max-width: 720px) {
-            .navbar { flex-direction: column; gap: 16px; padding: 22px 18px; }
-            .contact-card { padding: 32px 22px; }
-            .btn-send { width: 100%; }
-        }
-    </style>
+</style>
 </head>
+
 <body>
-    <div class="navbar">
-        <a href="{{ route('member.home') }}" class="logo">LibrAspire</a>
-        <div class="nav-links">
-            <a href="{{ route('member.home') }}">Home</a>
-            <a href="{{ route('member.contact') }}" class="active">Contact</a>
-            <a href="{{ route('member.profile') }}">Profile</a>
-        </div>
+
+<!-- NAVBAR -->
+<div class="navbar">
+    <a href="#" class="logo">LibrAspire</a>
+    <div class="nav-links">
+        <a href="#">Home</a>
+        <a href="#" class="active">Contact</a>
+        <a href="#">Profile</a>
     </div>
-    <div class="content">
-        <div class="contact-card">
-            <h1>Contact Us</h1>
-            <div>
-                <div class="field">
-                    <label for="subject">Subject</label>
-                    <input id="subject" type="text" name="subject" placeholder="Enter your subject">
-                </div>
-                <div class="field">
-                    <label for="message">Message</label>
-                    <textarea id="message" name="message" placeholder="Write your message"></textarea>
-                </div>
-                <button type="button" class="btn-send">Send</button>
-            </div>
-        </div>
+</div>
+
+<!-- CONTACT -->
+<section class="contact-section">
+    <div class="contact-bg">
+        <img src="https://github.com/ellyciaalvarety/ASpire-2026/raw/main/images/imgforcontactus.png" alt="bg">
     </div>
+
+    <div class="contact-card">
+        <h2>Contact Us</h2>
+        <input type="text" placeholder="Your Name">
+        <input type="email" placeholder="Email">
+        <textarea placeholder="Message"></textarea>
+        <button class="send-btn">Send</button>
+    </div>
+</section>
+<footer class="footer">
+        <p>© 2025 LibrAspire. All rights reserved.</p>
+        <p>Email | Twitter | Facebook | Instagram</p>
+        <p>Jl Raya ITS, Surabaya, Indonesia</p>
+    </footer>
+
 </body>
 </html>
+```
