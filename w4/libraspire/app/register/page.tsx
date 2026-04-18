@@ -1,8 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
+import type { FormEvent } from "react";
 
 export default function Register() {
   const router = useRouter();
@@ -14,32 +15,8 @@ export default function Register() {
     confirm: "",
   });
 
-  // ✅ SEED USER AWAL
-  useEffect(() => {
-    const users = JSON.parse(localStorage.getItem("users") || "[]");
-
-    if (users.length === 0) {
-      const defaultUsers = [
-        {
-          name: "Admin",
-          email: "admin@gmail.com",
-          password: "123",
-          role: "admin",
-        },
-        {
-          name: "Member",
-          email: "member@gmail.com",
-          password: "123",
-          role: "member",
-        },
-      ];
-
-      localStorage.setItem("users", JSON.stringify(defaultUsers));
-    }
-  }, []);
-
-  // ✅ HANDLE REGISTER
-  const handleSubmit = (e: any) => {
+  // ✅ REGISTER KE BACKEND
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (form.password !== form.confirm) {
@@ -47,30 +24,35 @@ export default function Register() {
       return;
     }
 
-    const users = JSON.parse(localStorage.getItem("users") || "[]");
+    try {
+      const res = await fetch("http://localhost:3000/api/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          password: form.password,
+        }),
+      });
 
-    // ✅ VALIDASI EMAIL DUPLIKAT
-    const exists = users.find((u: any) => u.email === form.email);
-    if (exists) {
-      alert("Email sudah terdaftar!");
-      return;
+      const data = await res.json();
+
+      if (!res.ok) {
+        alert(data.message || "Register gagal");
+        return;
+      }
+
+      alert("Register berhasil!");
+
+      // redirect ke login
+      router.push("/login");
+
+    } catch (err) {
+      console.error(err);
+      alert("Tidak bisa connect ke server");
     }
-
-    const newUser = {
-      name: form.name,
-      email: form.email,
-      password: form.password,
-      role: "member",
-    };
-
-    users.push(newUser);
-
-    localStorage.setItem("users", JSON.stringify(users));
-
-    alert("Register berhasil!");
-
-    // ✅ FIX REDIRECT (PAKAI NEXT ROUTER)
-    router.push("/login");
   };
 
   return (
@@ -98,6 +80,7 @@ export default function Register() {
                   type="text"
                   placeholder="Masukkan nama"
                   required
+                  value={form.name}
                   onChange={(e) =>
                     setForm({ ...form, name: e.target.value })
                   }
@@ -110,6 +93,7 @@ export default function Register() {
                   type="email"
                   placeholder="you@example.com"
                   required
+                  value={form.email}
                   onChange={(e) =>
                     setForm({ ...form, email: e.target.value })
                   }
@@ -122,6 +106,7 @@ export default function Register() {
                   type="password"
                   placeholder="Buat password"
                   required
+                  value={form.password}
                   onChange={(e) =>
                     setForm({ ...form, password: e.target.value })
                   }
@@ -134,6 +119,7 @@ export default function Register() {
                   type="password"
                   placeholder="Ulangi password"
                   required
+                  value={form.confirm}
                   onChange={(e) =>
                     setForm({ ...form, confirm: e.target.value })
                   }
@@ -163,7 +149,7 @@ export default function Register() {
         </section>
       </main>
 
-      {/* CSS */}
+      {/* CSS tetap */}
       <style jsx>{`
         .navbar {
           padding: 20px 50px;
@@ -219,12 +205,6 @@ export default function Register() {
           margin-bottom: 14px;
         }
 
-        .field label {
-          font-size: 13px;
-          font-weight: 600;
-          color: #5a6582;
-        }
-
         .field input {
           border: 1px solid #d5dcea;
           border-radius: 14px;
@@ -238,28 +218,12 @@ export default function Register() {
           padding: 13px;
           background: #0f234d;
           color: white;
-          cursor: pointer;
-        }
-
-        .btn-register:hover {
-          background: #1d3772;
         }
 
         .auth-intro {
           padding: 52px;
           background: linear-gradient(165deg, #0f234d, #1d3772);
           color: white;
-        }
-
-        .form-footer {
-          margin-top: 18px;
-          text-align: center;
-        }
-
-        @media (max-width: 900px) {
-          .auth-card {
-            grid-template-columns: 1fr;
-          }
         }
       `}</style>
     </div>

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 export default function Login() {
   const [form, setForm] = useState({
@@ -9,58 +9,51 @@ export default function Login() {
     password: "",
   });
 
-  // ✅ INIT DEFAULT USER (ADMIN + MEMBER)
-  useEffect(() => {
-    const users = JSON.parse(localStorage.getItem("users") || "[]");
-
-    if (users.length === 0) {
-      const defaultUsers = [
-        {
-          name: "Admin",
-          email: "admin@gmail.com",
-          password: "123",
-          role: "admin",
-        },
-        {
-          name: "Member",
-          email: "member@gmail.com",
-          password: "123",
-          role: "member",
-        },
-      ];
-
-      localStorage.setItem("users", JSON.stringify(defaultUsers));
-    }
-  }, []);
-
-  // ✅ LOGIN FUNCTION
-  const handleLogin = (e: any) => {
+  // LOGIN KE BACKEND
+  const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const users = JSON.parse(localStorage.getItem("users") || "[]");
-
-    const found = users.find(
-      (u: any) =>
-        u.email === form.email && u.password === form.password
-    );
-
-    if (!found) {
-      alert("Email atau password salah!");
+    if (!form.email || !form.password) {
+      alert("Email dan password wajib diisi!");
       return;
     }
 
-    localStorage.setItem("user", JSON.stringify(found));
+    try {
+      const res = await fetch("http://localhost:3000/api/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(form),
+      });
 
-    if (found.role === "admin") {
-      window.location.href = "/admin/dashboard";
-    } else {
-      window.location.href = "/member/dashboard";
+      const data = await res.json();
+
+      if (!res.ok) {
+        alert(data.message || "Login gagal");
+        return;
+      }
+
+      //  simpan token & user
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("user", JSON.stringify(data.user));
+
+      //  redirect berdasarkan role
+      if (data.user.role === "admin") {
+        window.location.href = "/admin/dashboard";
+      } else {
+        window.location.href = "/member/dashboard";
+      }
+
+    } catch (err) {
+      console.error(err);
+      alert("Tidak bisa connect ke server");
     }
   };
 
   return (
     <div className="page-login">
-      
+
       {/* NAVBAR */}
       <div className="navbar">
         LibrAspire
@@ -90,6 +83,7 @@ export default function Login() {
                   type="email"
                   placeholder="you@example.com"
                   required
+                  value={form.email}
                   onChange={(e) =>
                     setForm({ ...form, email: e.target.value })
                   }
@@ -102,6 +96,7 @@ export default function Login() {
                   type="password"
                   placeholder="Masukkan password"
                   required
+                  value={form.password}
                   onChange={(e) =>
                     setForm({ ...form, password: e.target.value })
                   }
@@ -169,7 +164,6 @@ export default function Login() {
         .auth-intro h1 {
           margin: 0 0 12px;
           font-size: 40px;
-          line-height: 1.05;
         }
 
         .auth-intro p {
