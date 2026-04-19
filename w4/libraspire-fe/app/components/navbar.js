@@ -10,7 +10,7 @@ export default function Navbar() {
   const navItemStyle = (path) => ({
     textDecoration: "none",
     fontSize: "16px",
-    // Link akan otomatis menebal jika berada di halaman tersebut
+    fontFamily: "'Inter', sans-serif",
     fontWeight: pathname === path ? "bold" : "500",
     color: pathname === path ? "#0d2861" : "#888",
     padding: "5px 10px",
@@ -39,47 +39,40 @@ export default function Navbar() {
           textDecoration: "none", 
           fontSize: "26px", 
           fontWeight: "800", 
-          color: "#1a2b56"
+          color: "#1a2b56",
+          fontFamily: "'Inter', sans-serif"
         }}>
           LibrAspire
         </Link>
       </div>
 
-      {/* 2. Kolom Pencarian (Tengah) */}
+      {/* 2. Kolom Pencarian - HILANG DI PROFILE & CONTACT */}
       <div style={{ flex: "1", display: "flex", justifyContent: "center", padding: "0 50px" }}>
-        <div style={{ position: "relative", width: "100%", maxWidth: "450px" }}>
-          <input 
-            type="text" 
-            placeholder="Insert Book Title" 
-            style={{
-              width: "100%",
-              padding: "12px 25px",
-              borderRadius: "50px",
-              border: "none",
-              backgroundColor: "#edf2f7",
-              outline: "none",
-              fontSize: "14px"
-            }}
-          />
-        </div>
+        {pathname !== "/profile" && pathname !== "/contact" && (
+          <div style={{ position: "relative", width: "100%", maxWidth: "450px" }}>
+            <input 
+              type="text" 
+              placeholder="Insert Book Title" 
+              style={{
+                width: "100%",
+                padding: "12px 25px",
+                borderRadius: "50px",
+                border: "none",
+                backgroundColor: "#edf2f7",
+                outline: "none",
+                fontSize: "14px",
+                fontFamily: "'Inter', sans-serif"
+              }}
+            />
+          </div>
+        )}
       </div>
 
-      {/* 3. Menu Navigasi (Kanan) */}
+      {/* 3. Menu Navigasi */}
       <nav style={{ display: "flex", gap: "25px", alignItems: "center" }}>
-        {/* Link ke Dashboard/Home */}
-        <Link href="/dashboard" style={navItemStyle("/dashboard")}>
-          Home
-        </Link>
-
-        {/* Link ke Halaman Contact */}
-        <Link href="/contact" style={navItemStyle("/contact")}>
-          Contact
-        </Link>
-
-        {/* LINK PROFILE - Ini yang Anda butuhkan */}
-        <Link href="/profile" style={navItemStyle("/profile")}>
-          Profile
-        </Link>
+        <Link href="/dashboard" style={navItemStyle("/dashboard")}>Home</Link>
+        <Link href="/contact" style={navItemStyle("/contact")}>Contact</Link>
+        <Link href="/profile" style={navItemStyle("/profile")}>Profile</Link>
       </nav>
 
     </header>
