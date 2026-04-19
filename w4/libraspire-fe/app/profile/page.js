@@ -4,7 +4,6 @@ import Navbar from "../components/navbar";
 import Footer from "../components/Footer";
 
 export default function Profile() {
-  // Data dummy sesuai gambar
   const userData = {
     name: "Oakley Caesar",
     email: "Oakleyc@gmail.com",
@@ -13,13 +12,32 @@ export default function Profile() {
   };
 
   return (
-    <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column", backgroundColor: "#f1f3f5", fontFamily: "sans-serif" }}>
+    // MEMUAT FONT INTER DARI GOOGLE FONTS SECARA DYNAMIC
+    <div style={{ 
+      minHeight: "100vh", 
+      display: "flex", 
+      flexDirection: "column", 
+      backgroundColor: "#f1f3f5",
+      // MENERAPKAN FONT INTER KE SELURUH HALAMAN
+      fontFamily: "'Inter', system-ui, -apple-system, sans-serif",
+      WebkitFontSmoothing: "antialiased",
+      MozOsxFontSmoothing: "grayscale"
+    }}>
+      {/* Import Inter Font Style */}
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+      `}</style>
+
       <Navbar />
 
-      {/* Container Utama */}
-      <main style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", padding: "40px 20px" }}>
+      <main style={{ 
+        flex: 1, 
+        display: "flex", 
+        alignItems: "center", 
+        justifyContent: "center", 
+        padding: "40px 20px" 
+      }}>
         
-        {/* Card Profile Biru Tua */}
         <div style={{
           backgroundColor: "#0a193d",
           width: "100%",
@@ -33,7 +51,6 @@ export default function Profile() {
           boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.2)"
         }}>
           
-          {/* Bagian Foto (Kiri) */}
           <div style={{ flex: "0 0 auto" }}>
             <div style={{
               width: "180px",
@@ -50,38 +67,43 @@ export default function Profile() {
             </div>
           </div>
 
-          {/* Bagian Informasi (Kanan) */}
           <div style={{ flex: 1, color: "white" }}>
             <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
               
-              {/* Row Name */}
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                <span style={{ fontSize: "22px", fontWeight: "bold" }}>Name</span>
-                <span style={{ fontSize: "18px", opacity: 0.9 }}>{userData.name}</span>
+                <span style={{ 
+                  fontSize: "22px", 
+                  fontWeight: "800", // Ekstra Bold untuk Judul
+                  letterSpacing: "-0.5px" // Sedikit dirapatkan agar mirip desain
+                }}>Name</span>
+                <span style={{ 
+                  fontSize: "18px", 
+                  fontWeight: "400", // Normal untuk Isi
+                  opacity: 0.9 
+                }}>{userData.name}</span>
               </div>
 
-              {/* Row Email */}
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                <span style={{ fontSize: "22px", fontWeight: "bold" }}>Email</span>
-                <span style={{ fontSize: "18px", opacity: 0.9 }}>{userData.email}</span>
+                <span style={{ fontSize: "22px", fontWeight: "800", letterSpacing: "-0.5px" }}>Email</span>
+                <span style={{ fontSize: "18px", fontWeight: "400", opacity: 0.9 }}>{userData.email}</span>
               </div>
 
-              {/* Row Password */}
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                <span style={{ fontSize: "22px", fontWeight: "bold" }}>Password</span>
-                <span style={{ fontSize: "18px", opacity: 0.9 }}>{userData.password}</span>
+                <span style={{ fontSize: "22px", fontWeight: "800", letterSpacing: "-0.5px" }}>Password</span>
+                <span style={{ fontSize: "18px", fontWeight: "400", opacity: 0.9 }}>{userData.password}</span>
               </div>
 
-              {/* Tombol Log Out */}
               <div style={{ marginTop: "10px" }}>
                 <button style={{
                   background: "none",
                   border: "none",
                   color: "#ff3b30",
                   fontSize: "22px",
-                  fontWeight: "bold",
+                  fontWeight: "800", // Ekstra Bold
                   cursor: "pointer",
-                  padding: 0
+                  padding: 0,
+                  fontFamily: "inherit", // Memastikan tombol pakai font yang sama
+                  letterSpacing: "-0.5px"
                 }}>
                   Log Out
                 </button>
@@ -89,18 +111,19 @@ export default function Profile() {
             </div>
           </div>
 
-          {/* Tombol Edit di Kanan Bawah */}
           <div style={{ position: "absolute", bottom: "40px", right: "50px" }}>
             <button style={{
               backgroundColor: "white",
               color: "#0a193d",
-              fontWeight: "bold",
+              fontWeight: "700", // Bold
               padding: "10px 60px",
               borderRadius: "50px",
               border: "none",
               fontSize: "18px",
               cursor: "pointer",
-              boxShadow: "0 4px 6px rgba(0,0,0,0.1)"
+              boxShadow: "0 4px 6px rgba(0,0,0,0.1)",
+              fontFamily: "inherit",
+              letterSpacing: "-0.2px"
             }}>
               Edit
             </button>
