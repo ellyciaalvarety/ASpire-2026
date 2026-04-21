@@ -1,0 +1,42 @@
+export const bukupplr = [
+  {
+    id: 1,
+    judul: "Atomic Habits",
+    isbn: "9786020633176",
+    pengarang: "James Clear",
+    sinopsis: "Atomic Habits: Perubahan Kecil yang Memberikan Hasil Luar Biasa adalah buku kategori self improvement karya James Clear. Pada umumnya, perubahan-perubahan kecil seringkali terkesan tak bermakna karena tidak langsung membawa perubahan nyata pada hidup suatu manusia. Jika diumpamakan sekeping koin tidak bisa menjadikan kaya, suatu perubahan positif seperti meditasi selama satu menit atau membaca buku satu halaman setiap hari mustahil menghasilkan perbedaan yang bisa terdeteksi. Namun hal tersebut tidak sejalan dengan pemikiran James Clear, ia merupakan seorang pakar dunia yang terkenal dengan habits atau kebiasaan. Ia tahu bahwa tiap perbaikan kecil bagaikan menambahkan pasir ke sisi positif timbangan dan akan menghasilkan perubahan nyata yang berasal dari efek gabungan ratusan bahkan ribuan keputusan kecil. Ia menamakan perubahan kecil yang membawa pengaruh yang luar biasa dengan nama atomic habits. Dalam buku ini James Clear, seorang penulis sekaligus pembicara yang sangat terkenal akan topik habit memaparkan bahwa pada hakikatnya sebuah perubahan kecil (Atomic Habit) sering dianggap remeh, sebenarnya akan memberikan hasil yang sangat menjanjikan dalam hidup. Yang dipandang penting dalam perubahan perilaku bukan satu persen perbaikan tunggal, melainkan ribuan perbaikan atau sekumpulan atomic habits yang saling bertumpuk dan menjadi unit dasar dalam suatu sistem yang penting. James Clear menjelaskan bahwa terdapat tiga tingkat perubahan yaitu perubahan hasil, perubahan proses, dan perubahan identitas. Cara paling efektif dalam mengubah kebiasaan adalah bukan berfokus pada apa yang ingin dicapai, melainkan tipe orang seperti apa yang diinginkan. Identitas seseorang muncul dari kebiasaan yang dilakukan setiap harinya. Alasan utama kebiasaan penting karena kebiasaan dapat mengubah keyakinan tentang diri sendiri. Clear juga memperkenalkan empat Kaidah Perubahan Perilaku untuk membantu mengubah perilaku manusia yaitu menjadikannya terlihat, menjadikannya menarik, menjadikannya mudah, menjadikannya memuaskan. Keempat kaidah ini tidak hanya mengajari kita cara menciptakan kebiasaan-kebiasaan baru, melainkan menyingkapi sejumlah wawasan menarik tentang perilaku manusia.",
+    cover: "covers/atomichabits.png",
+  },
+  {
+    id: 4,
+    judul: "As Long As the Lemon Trees grow",
+    isbn: "9780132350884",
+    pengarang: "Robert C. Martin",
+    sinopsis: "A year ago, before the revolution, Salama watched her brother marry her best friend, Layla, and wondered when her own love story might begin. Now she works at the hospital - helping those she can, closing the eyes of those she cant. Layla and her unborn baby are all Salama has left. Unless you count Khawf. But hes a hallucination; a symptom of the horrors shes seen. Every day he urges Salama to leave. Every day she refuses. Until she crosses paths with Kenan, the boy with the vivid green eyes, who wants to stay and risk his life for everything Syria could be.",
+    cover: "covers/aslongasthelemontreesgrow.png",
+  },
+  {
+    id: 7,
+    judul: "The Big Four (Empat Besar)",
+    isbn: "9789792228632",
+    pengarang: "Agatha Christie",
+    sinopsis: "Di dalam gudang bawah tanah di East End itu, aku yakin inilah saat-saatku yang terakhir. Kusiapkan diriku menghadapi shock derasnya arus air yang hitam itu. Aku terkejut ketika mendengar tawa bernada rendah. 'Anda pemberani,' kata laki-laki di sofa itu. 'Kami orang Timur menghargai keberanian. Anda telah berani menghadapi kematian Anda sendiri. Dapatkah Anda menghadapi kematian orang lain pula?'",
+    cover: "covers/thebigfour.png",
+  },
+  {
+    id: 8,
+    judul: "Percy Jackson #2: The Sea Of Monsters",
+    isbn: "9786232422544",
+    pengarang: "Rick Riordan",
+    sinopsis: "Kau pikir hidupku kembali tenang setelah berhasil mencegah perang besar antar dewa? Tentu saja tidak. Aku terus dihantui mimpi tentang Grover, sahabat satirku, yang sepertinya hendak dinikahi paksa oleh Cyclops jahat. Lalu, aku membakar gimnasium sekolah tanpa sengaja—salahkan para raksasa! Perkemahan Blasteran bahkan menghadapi serangan dari banteng-banteng yang suka bikin gosong orang.",
+    cover: "covers/pjo2.png",
+  },
+  {
+    id: 9,
+    judul: "Five Nights At Freddy`S Graphic Novel #1: The Silver Eyes",
+    isbn: "9781338298482",
+    pengarang: "Scott Caethon",
+    sinopsis: "Five Nights At Freddy`S Graphic Novel #1: The Silver Eyes",
+    cover: "covers/fnafthesilvereyes.png",
+  },
+];

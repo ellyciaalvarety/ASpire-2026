@@ -3,10 +3,9 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-export default function Navbar() {
+export default function Navbar({ search, setSearch }) {
   const pathname = usePathname();
 
-  // Gaya untuk item navigasi
   const navItemStyle = (path) => ({
     textDecoration: "none",
     fontSize: "16px",
@@ -33,43 +32,42 @@ export default function Navbar() {
       boxSizing: "border-box"
     }}>
       
-      {/* 1. Logo LibrAspire */}
-      <div style={{ flex: "0 0 auto" }}>
+      {/* Logo */}
+      <div>
         <Link href="/dashboard" style={{ 
           textDecoration: "none", 
           fontSize: "26px", 
           fontWeight: "800", 
-          color: "#1a2b56",
-          fontFamily: "'Inter', sans-serif"
+          color: "#1a2b56"
         }}>
           LibrAspire
         </Link>
       </div>
 
-      {/* 2. Kolom Pencarian - HILANG DI PROFILE & CONTACT */}
-      <div style={{ flex: "1", display: "flex", justifyContent: "center", padding: "0 50px" }}>
+      {/* SEARCH (cuma 1!) */}
+      <div style={{ flex: "1", display: "flex", justifyContent: "center" }}>
         {pathname !== "/profile" && pathname !== "/contact" && (
-          <div style={{ position: "relative", width: "100%", maxWidth: "450px" }}>
-            <input 
-              type="text" 
-              placeholder="Insert Book Title" 
-              style={{
-                width: "100%",
-                padding: "12px 25px",
-                borderRadius: "50px",
-                border: "none",
-                backgroundColor: "#edf2f7",
-                outline: "none",
-                fontSize: "14px",
-                fontFamily: "'Inter', sans-serif"
-              }}
-            />
-          </div>
+          <input
+            type="text"
+            placeholder="Insert Book Title"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            style={{
+              width: "100%",
+              maxWidth: "450px",
+              padding: "12px 25px",
+              borderRadius: "50px",
+              border: "none",
+              backgroundColor: "#edf2f7",
+              outline: "none",
+              fontSize: "14px"
+            }}
+          />
         )}
       </div>
 
-      {/* 3. Menu Navigasi */}
-      <nav style={{ display: "flex", gap: "25px", alignItems: "center" }}>
+      {/* NAV */}
+      <nav style={{ display: "flex", gap: "25px" }}>
         <Link href="/dashboard" style={navItemStyle("/dashboard")}>Home</Link>
         <Link href="/contact" style={navItemStyle("/contact")}>Contact</Link>
         <Link href="/profile" style={navItemStyle("/profile")}>Profile</Link>
