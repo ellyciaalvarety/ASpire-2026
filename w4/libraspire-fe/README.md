@@ -1,36 +1,114 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+LibrAspire Frontend
 
-## Getting Started
+# Tim Pengembang
 
-First, run the development server:
+* Ellycia Alvarety
+* Muhammad Rafi Arsyad
+* Abdullah Falich
+
+---
+
+# Project
+
+**LibrAspire** adalah aplikasi berbasis web yang bertujuan untuk memudahkan pengguna dalam mencari dan meminjam buku secara online. Project ini merupakan bagian dari pengembangan frontend yang berfokus pada pengalaman pengguna (UI/UX) yang sederhana dan interaktif.
+
+---
+
+# Repository
+
+Frontend source code dapat diakses melalui link berikut:
+👉 https://github.com/ellyciaalvarety/ASpire-2026/tree/main/w4/libraspire-fe
+
+---
+
+# Fitur Utama
+
+Beberapa peningkatan dan fitur yang telah berhasil diimplementasikan
+
+* Fitur Pencarian Buku
+  Pengguna dapat mencari buku berdasarkan kata kunci.
+
+* Detail Buku
+  Menampilkan informasi lengkap dari buku yang dipilih.
+
+* Tombol Pinjam Interaktif
+  Tombol "Pinjam" akan berubah warna saat diklik sebagai feedback visual.
+
+* Halaman Profil Terpisah
+  Halaman profil user dibuat terpisah untuk meningkatkan struktur navigasi.
+
+---
+
+# Teknologi yang Digunakan
+
+* HTML
+* CSS
+* JavaScript
+* Next.js
+
+---
+
+# Struktur Umum
+
+```
+libraspire-fe/
+│── pages/
+│── components/
+│── styles/
+│── public/
+│── package.json
+```
+
+---
+
+# Cara Menjalankan Project
+
+1. Clone repository:
+
+```bash
+git clone https://github.com/ellyciaalvarety/ASpire-2026.git
+```
+
+2. Masuk ke folder project:
+
+```bash
+cd w4/libraspire-fe
+```
+
+3. Install dependencies:
+
+```bash
+npm install
+```
+
+4. Jalankan project:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+5. Buka di browser:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+# Catatan Pengembangan
 
-To learn more about Next.js, take a look at the following resources:
+Project ini masih dapat dikembangkan lebih lanjut, seperti:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+* Integrasi dengan backend (API)
+* Sistem autentikasi user
+* Fitur riwayat peminjaman
+* UI/UX yang lebih modern
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+# Lisensi
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Project ini digunakan untuk keperluan pembelajaran dan pengembangan mahasiswa.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+

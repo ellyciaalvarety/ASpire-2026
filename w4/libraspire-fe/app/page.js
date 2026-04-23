@@ -92,12 +92,12 @@ export default function Home() {
         }
 
         .hero {
-          min-height: 90vh;
+          min-height: 50vh;
           display: flex;
           justify-content: center;
           align-items: center;
           text-align: center;
-          padding: 40px;
+          padding: 0px;
         }
 
         .hero-text {
@@ -142,6 +142,7 @@ export default function Home() {
         }
 
         .how-it-works {
+          margin-top: 50px;
           display: grid;
           grid-template-columns: 1fr 1fr;
           min-height: 380px;
